@@ -1,0 +1,6 @@
+# 验证运行产物不入库（仅保留目录结构）
+runs/*/
+!runs/.gitkeep
+drafts/*
+!drafts/.gitkeep
+latest

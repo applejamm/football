@@ -1,0 +1,72 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+
+# Secrets
+.env
+.env.*
+
+# Private ledger（代码公开、台账私有；本地 tracking.md 不入库）
+tracking.md
+virtual/runs/
+
+# Generated snapshots & reports
+snapshots/*
+!snapshots/README.md
+reports/*
+!reports/README.md
+backtest/reports/
+simulation/
+diffs/
+raw/
+fundamentals/
+fundamentals_db.json
+
+# Validation runtime (keep structure)
+validation/runs/*/
+validation/runs/*.json
+validation/latest
+validation/workflow/*
+!validation/workflow/260619_state.json
+validation/drafts/*
+!validation/drafts/.gitkeep
+!validation/drafts/scan_260616_demo.json
+!validation/drafts/scan_260616_20260617-221535.json
+!validation/drafts/scan_260619_20260618-210344.json
+!validation/drafts/decision_260619_workflow_20260618-220808.json
+
+# Replay runtime
+replay/runs/
+
+# Root-level runtime artifacts
+/odds_*.json
+/odds_window_*.json
+/prediction_*.json
+/prediction_*.html
+/prediction_*.md
+/prediction_window_*.md
+/decision_*.html
+/decision_*.md
+/fundamentals_*.json
+/fundamentals_*.md
+/compare_intl_*.html
+/scores_*.json
+/report_*.html
+/analysis_*.md
+
+# Test fixtures at project root (whitelist)
+!/odds_260616_20260616-212759.json
+!/odds_260617_20260617-202235.json
+!/odds_window_24h_20260618-210344.json
+!/prediction_260616_20260616-214115.json
+!/prediction_260616_20260617-003251.json
+!/prediction_260617_20260618-002841.json
+!/prediction_260619_20260618-210344.json
+!/prediction_260619_20260618-220808.json
+!/prediction_260619_20260618-220808.html
+!/decision_260619_workflow_20260618-220808.html
+!/decision_260616_match017_020_20260616-213000.md
+!/fundamentals_fifa.world_20260618-002404.json

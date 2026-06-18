@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>投注决策 · 260618 · 6进1主推</title>
+<!-- validation_run_id: 20260618-220809 -->
+<style>
+  :root {
+    --bg-1:#0b1220; --bg-2:#1e293b;
+    --card:#111c30; --card-2:#1c2942;
+    --txt:#e2e8f0; --muted:#94a3b8; --line:#2c3a55;
+    --green:#4ade80; --red:#f87171; --gold:#fbbf24; --grey:#cbd5e1;
+    --accent:#60a5fa; --home:#3b82f6; --away:#f97316;
+    --play-wdl:#60a5fa; --play-hcap:#a78bfa; --play-tg:#34d399;
+    --ease-out:cubic-bezier(0.16,1,0.3,1);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;padding:0;background:linear-gradient(135deg,var(--bg-1),var(--bg-2));color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Arial,sans-serif;line-height:1.55;}
+  .num{font-variant-numeric:tabular-nums;}
+  .wrap{max-width:1080px;margin:0 auto;padding:28px 22px 60px;}
+  /* ── PM 工作流步骤（报告顶部） ── */
+  .workflow-pipeline{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:18px;}
+  .workflow-pipeline .wf-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px;}
+  .workflow-pipeline .wf-title{font-size:15px;font-weight:700;margin:0;}
+  .workflow-pipeline .wf-badge{font-size:11px;padding:4px 10px;border-radius:999px;font-weight:600;}
+  .workflow-pipeline .wf-badge.wf-ok{background:rgba(34,197,94,.15);color:var(--green);border:1px solid rgba(34,197,94,.35);}
+  .workflow-pipeline .wf-badge.wf-warn{background:rgba(248,113,113,.12);color:var(--red);border:1px solid rgba(248,113,113,.35);}
+  .workflow-pipeline .wf-ts{font-size:11px;color:var(--muted);margin-left:auto;}
+  .wf-steps{list-style:none;margin:0;padding:0;display:grid;gap:6px;}
+  .wf-step{display:grid;grid-template-columns:36px 22px 1fr auto;gap:8px;align-items:center;padding:8px 10px;border-radius:8px;border:1px solid var(--line);font-size:12px;background:rgba(15,23,42,.4);}
+  .wf-step.pass{border-color:rgba(34,197,94,.25);background:rgba(34,197,94,.06);}
+  .wf-step.fail{border-color:rgba(248,113,113,.35);background:rgba(248,113,113,.08);}
+  .wf-step .wf-id{color:var(--muted);font-size:11px;}
+  .wf-step .wf-icon{font-weight:700;}
+  .wf-step.pass .wf-icon{color:var(--green);}
+  .wf-step.fail .wf-icon{color:var(--red);}
+  .wf-step .wf-name{font-weight:600;}
+  .wf-step .wf-main{display:flex;flex-direction:column;gap:2px;min-width:0;}
+  .wf-step .wf-detail{color:var(--muted);font-size:11px;}
+  .wf-step .wf-status{font-size:10px;font-weight:700;padding:2px 8px;border-radius:6px;}
+  .wf-step.pass .wf-status{background:rgba(34,197,94,.15);color:var(--green);}
+  .wf-step.fail .wf-status{background:rgba(248,113,113,.15);color:var(--red);}
+  .workflow-pipeline .wf-note{font-size:11px;color:var(--muted);margin:10px 0 0;}
+  header.h{padding:24px 22px;background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid var(--line);border-radius:14px;margin-bottom:20px;}
+  header.h h1{margin:0 0 8px;font-size:22px;font-weight:600;letter-spacing:.3px;}
+  header.h .sub{color:var(--muted);font-size:13px;}
+  header.h .meta{margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px 24px;font-size:12px;color:#cbd5e1;}
+  header.h .meta b{color:#fff;font-weight:500;}
+  .warn{background:rgba(251,191,36,.10);border-left:4px solid var(--gold);border-radius:8px;padding:14px 16px;margin-bottom:20px;color:#fde68a;
+    animation:warnIn .2s var(--ease-out), warnPulse .3s var(--ease-out) .25s 1;}
+  .warn b{color:var(--gold);}
+  .warn small{display:block;color:#fcd34d;margin-top:4px;font-size:12px;}
+  .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:22px;}
+  .kpi .c{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;text-align:center;
+    transition:transform .15s var(--ease-out),border-color .15s;animation:kpiIn .2s var(--ease-out) backwards;}
+  .kpi .c:nth-child(1){animation-delay:.05s;}
+  .kpi .c:nth-child(2){animation-delay:.1s;}
+  .kpi .c:nth-child(3){animation-delay:.15s;}
+  .kpi .c:nth-child(4){animation-delay:.2s;}
+  .kpi .c:hover{transform:translateY(-2px);border-color:rgba(96,165,250,.35);}
+  .kpi .c .lab{font-size:12px;color:var(--muted);margin-bottom:8px;letter-spacing:.5px;}
+  .kpi .c .v{font-size:28px;font-weight:700;}
+  .kpi .c.green .v{color:var(--green);}
+  .kpi .c.red .v{color:var(--red);}
+  .kpi .c.gold .v{color:var(--gold);}
+  .kpi .c.grey .v{color:var(--grey);}
+  h2{font-size:16px;color:var(--accent);margin:24px 0 12px;border-bottom:1px solid var(--line);padding-bottom:6px;}
+  h2 .hint{font-size:11px;color:var(--muted);font-weight:400;margin-left:8px;}
+
+  /* ── v2.0 hero-pick（PRD §4.4.2）── */
+  .hero-pick{background:linear-gradient(135deg,rgba(251,191,36,.10),rgba(251,191,36,.02));
+    border:2px solid var(--gold);border-radius:16px;padding:22px 24px;margin-bottom:12px;
+    display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;
+    animation:heroIn .25s var(--ease-out) .15s backwards;
+    transition:transform .2s var(--ease-out),box-shadow .2s var(--ease-out),border-color .2s;}
+  .hero-pick:hover,.hero-pick.is-linked{transform:translateY(-2px);box-shadow:0 14px 48px rgba(251,191,36,.14);}
+  .hero-pick .eyebrow{font-size:12px;color:var(--gold);letter-spacing:.5px;margin-bottom:6px;}
+  .hero-pick .title{font-size:20px;font-weight:700;}
+  .hero-pick .pick-line{font-size:16px;color:var(--gold);margin:6px 0 10px;}
+  .hero-pick .meta-line{font-size:13px;color:var(--muted);}
+  .hero-pick .right{text-align:right;}
+  .hero-pick .amt{font-size:40px;font-weight:800;color:var(--gold);line-height:1;}
+  .hero-pick .amt-lab{font-size:11px;color:var(--muted);}
+  .hero-pick .score-val{font-size:24px;font-weight:700;color:var(--green);}
+  .dim-bars{margin-top:12px;display:flex;flex-direction:column;gap:6px;max-width:240px;margin-left:auto;}
+  .dim-row{display:grid;grid-template-columns:56px 1fr 32px;gap:8px;align-items:center;font-size:10px;color:var(--muted);}
+  .dim-row .db{height:6px;background:#0f172a;border-radius:3px;overflow:hidden;border:1px solid var(--line);}
+  .mini-dim i b{display:block;height:100%;width:var(--w,0);transition:width .2s var(--ease-out);}
+  .dim-row .db i{display:block;height:100%;width:var(--w,0);background:linear-gradient(90deg,var(--accent),var(--gold));transition:width .2s var(--ease-out);}
+  body.bars-ready .dim-row .db i,
+  body.bars-ready .mini-dim i b{width:var(--w,0);}
+  .hero-ribbon{font-size:12px;color:var(--muted);min-height:20px;margin-bottom:14px;padding:0 4px;}
+  .hero-ribbon strong{color:var(--accent);}
+
+  /* ── v2.1 top3-picks（PRD §4.4 · T-6-7）── */
+  .top3-picks{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-bottom:18px;}
+  .top3-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;
+    cursor:pointer;transition:transform .2s var(--ease-out),border-color .2s,box-shadow .2s;
+    animation:rowIn .2s var(--ease-out) backwards;}
+  .top3-card:nth-child(1){animation-delay:.05s;}
+  .top3-card:nth-child(2){animation-delay:.1s;}
+  .top3-card:nth-child(3){animation-delay:.15s;}
+  .top3-card:hover,.top3-card:focus-visible{transform:translateY(-2px);border-color:rgba(96,165,250,.45);box-shadow:0 8px 28px rgba(0,0,0,.25);outline:none;}
+  .top3-card.is-hero-match{border-color:rgba(251,191,36,.55);box-shadow:0 0 0 1px rgba(251,191,36,.2);}
+  .top3-card.is-active{border-color:var(--accent);box-shadow:0 0 0 2px rgba(96,165,250,.35);}
+  .top3-card .card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:10px;}
+  .top3-card .card-label{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.3px;}
+  .top3-card.is-hero-match .card-label{color:var(--gold);}
+  .top3-card .hero-badge{font-size:10px;padding:2px 8px;border-radius:999px;background:rgba(251,191,36,.12);color:var(--gold);border:1px solid rgba(251,191,36,.35);white-space:nowrap;}
+  .top3-card .match-line{font-size:14px;font-weight:600;margin-bottom:4px;}
+  .top3-card .pick-line{font-size:13px;color:var(--gold);margin-bottom:12px;}
+  .top3-card .win-gross{font-size:32px;font-weight:800;color:var(--gold);line-height:1.1;}
+  .top3-card .win-lab{font-size:11px;color:var(--muted);margin-bottom:10px;}
+  .top3-card .stat-row{display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-top:1px dashed var(--line);}
+  .top3-card .stat-row span:first-child{color:var(--muted);}
+  .top3-card .stat-row span:last-child{font-weight:600;}
+  .top3-card .ref-note{font-size:10px;color:var(--muted);margin-top:10px;line-height:1.4;}
+  @media (max-width:375px){
+    .top3-picks{grid-template-columns:1fr;}
+    .top3-card .win-gross{font-size:28px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .top3-card{animation:none;transition:none;}
+    .top3-card:hover,.top3-card:focus-visible{transform:none;}
+  }
+
+  /* ── v2.0 top6（PRD §4.4.3）── */
+  .top6-wrap{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:8px;}
+  table.top6{width:100%;border-collapse:collapse;}
+  .top6 th,.top6 td{padding:11px 14px;text-align:left;font-size:13px;border-bottom:1px solid var(--line);}
+  .top6 th{background:#152033;color:var(--muted);font-size:11px;font-weight:500;}
+  .top6 tbody tr.top6-row{cursor:pointer;transition:background .15s var(--ease-out);outline:none;
+    animation:rowIn .2s var(--ease-out) backwards;}
+  .top6 tbody tr.top6-row:nth-child(1){animation-delay:.04s;}
+  .top6 tbody tr.top6-row:nth-child(3){animation-delay:.08s;}
+  .top6 tbody tr.top6-row:nth-child(5){animation-delay:.12s;}
+  .top6 tbody tr.top6-row:nth-child(7){animation-delay:.16s;}
+  .top6 tbody tr.top6-row:nth-child(9){animation-delay:.20s;}
+  .top6 tbody tr.top6-row:nth-child(11){animation-delay:.24s;}
+  .top6 tbody tr.top6-row:hover td,.top6 tbody tr.top6-row:focus-visible td{background:rgba(96,165,250,.08);}
+  .top6 tbody tr.top6-row.hero-link td{background:rgba(251,191,36,.07);}
+  .top6 tbody tr.top6-row.hero-link.is-active td,.top6 tbody tr.top6-row.is-active td{
+    background:rgba(251,191,36,.12);box-shadow:inset 3px 0 0 var(--gold);}
+  .top6 tbody tr.cut-row{opacity:.55;cursor:help;}
+  .top6 tbody tr.cut-row:hover td{background:rgba(248,113,113,.06);}
+  .top6 .status{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;font-weight:600;}
+  .top6 .status.hero{background:rgba(251,191,36,.15);color:var(--gold);border:1px solid rgba(251,191,36,.35);}
+  .top6 .status.in{background:rgba(96,165,250,.12);color:var(--accent);border:1px solid rgba(96,165,250,.3);}
+  .top6 .status.cut{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--line);}
+  .top6 .play-type{display:inline-flex;align-items:center;gap:6px;font-size:12px;}
+  .top6 .play-dot{width:8px;height:8px;border-radius:50%;}
+  .top6 .ev-must{color:var(--gold);}
+  .top6 .ev-cut{color:var(--muted);text-decoration:line-through;}
+  .mini-dim{display:flex;gap:2px;height:6px;width:88px;}
+  .mini-dim i{flex:1;background:#1c2942;border-radius:1px;overflow:hidden;}
+  .mini-dim i:nth-child(1) b{background:var(--gold);}
+  .mini-dim i:nth-child(2) b{background:var(--accent);}
+  .mini-dim i:nth-child(3) b{background:var(--play-tg);}
+  .mini-dim i:nth-child(4) b{background:var(--play-hcap);}
+  tr.top6-detail td{padding:0;border-bottom:1px solid var(--line);background:#0f172a;}
+  tr.top6-detail .detail-inner{max-height:0;overflow:hidden;transition:max-height .25s var(--ease-out),padding .25s;padding:0 16px;}
+  tr.top6-detail.open .detail-inner{max-height:140px;padding:12px 16px 14px;}
+  .detail-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;font-size:11px;}
+  .detail-grid div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px;text-align:center;}
+  .detail-grid b{display:block;font-size:15px;margin-top:2px;}
+  .tip{position:relative;}
+  .tip[data-tip]:hover::after,.tip[data-tip]:focus-visible::after{
+    content:attr(data-tip);position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);
+    background:#0f172a;border:1px solid var(--line);color:#e2e8f0;font-size:11px;padding:8px 10px;border-radius:8px;
+    white-space:normal;max-width:280px;z-index:5;box-shadow:0 8px 24px rgba(0,0,0,.35);pointer-events:none;}
+
+  /* ── 对阵基本面对比 ── */
+  .matchups{display:grid;grid-template-columns:repeat(auto-fit,minmax(480px,1fr));gap:16px;margin-bottom:8px;}
+  .matchup{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px 14px;overflow:hidden;}
+  .matchup.focus{border-color:rgba(96,165,250,.45);box-shadow:0 0 0 1px rgba(96,165,250,.15);}
+  .matchup .mu-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+  .matchup .mu-id{font-size:11px;color:var(--muted);letter-spacing:.4px;}
+  .matchup .mu-teams{display:flex;align-items:center;justify-content:center;gap:12px;flex:1;}
+  .matchup .team-side{flex:1;text-align:center;min-width:0;}
+  .matchup .team-side.home .t-name{color:var(--home);}
+  .matchup .team-side.away .t-name{color:var(--away);}
+  .matchup .t-name{font-size:17px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .matchup .t-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+  .matchup .vs-badge{background:#0f172a;border:1px solid var(--line);color:var(--muted);font-size:11px;font-weight:700;padding:4px 8px;border-radius:999px;flex-shrink:0;}
+  .matchup .mu-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+  .matchup .tag{font-size:10px;padding:3px 8px;border-radius:6px;background:rgba(15,23,42,.8);border:1px solid var(--line);color:var(--muted);}
+  .matchup .tag.hot{color:var(--gold);border-color:rgba(251,191,36,.35);}
+  .matchup .tag.bet{color:var(--accent);border-color:rgba(96,165,250,.35);}
+  .cmp-table{width:100%;font-size:12px;}
+  .cmp-table .cmp-head{display:grid;grid-template-columns:88px 1fr 88px;gap:8px;padding:0 0 8px;color:var(--muted);font-size:11px;letter-spacing:.3px;}
+  .cmp-table .cmp-head span:nth-child(2){text-align:center;}
+  .cmp-table .cmp-head .home-h{text-align:right;color:var(--home);}
+  .cmp-table .cmp-head .away-h{text-align:left;color:var(--away);}
+  .cmp-row{display:grid;grid-template-columns:88px 1fr 88px;gap:8px;align-items:center;padding:9px 0;border-top:1px dashed rgba(44,58,85,.7);}
+  .cmp-row .cmp-label{color:var(--muted);font-size:11px;}
+  .cmp-row .cmp-val{font-weight:700;font-size:13px;}
+  .cmp-row .cmp-val.home{text-align:right;color:var(--home);}
+  .cmp-row .cmp-val.away{text-align:left;color:var(--away);}
+  .cmp-row .cmp-val.win{color:var(--green);}
+  .cmp-bar-box{display:flex;height:10px;border-radius:5px;overflow:hidden;background:#0f172a;border:1px solid var(--line);}
+  .cmp-bar-box .seg-h{background:linear-gradient(90deg,#2563eb,#60a5fa);}
+  .cmp-bar-box .seg-a{background:linear-gradient(90deg,#fb923c,#f97316);margin-left:auto;}
+  .cmp-bar-box .seg-h,.cmp-bar-box .seg-a{height:100%;transition:width .2s var(--ease-out);}
+  .form-row{display:flex;gap:3px;justify-content:flex-end;flex-wrap:wrap;}
+  .form-row.away-f{justify-content:flex-start;}
+  .form-row i{font-style:normal;font-size:10px;font-weight:700;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;border-radius:4px;}
+  .form-row .W{background:rgba(74,222,128,.15);color:var(--green);}
+  .form-row .D{background:rgba(203,213,225,.12);color:var(--grey);}
+  .form-row .L{background:rgba(248,113,113,.15);color:var(--red);}
+  .prob-1x2{margin-top:4px;}
+  .prob-1x2 .p-row{display:grid;grid-template-columns:28px 1fr 42px;gap:6px;align-items:center;margin:4px 0;font-size:11px;}
+  .prob-1x2 .p-lab{color:var(--muted);}
+  .prob-1x2 .p-bar{height:6px;background:#0f172a;border-radius:3px;overflow:hidden;border:1px solid var(--line);}
+  .prob-1x2 .p-bar i{display:block;height:100%;border-radius:2px;}
+  .prob-1x2 .p-bar .win-i{background:var(--home);}
+  .prob-1x2 .p-bar .draw-i{background:var(--grey);}
+  .prob-1x2 .p-bar .lose-i{background:var(--away);}
+  .prob-1x2 .p-val{text-align:right;font-weight:600;}
+  .matchup .mu-foot{margin-top:12px;padding-top:10px;border-top:1px solid var(--line);font-size:11px;color:var(--muted);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;}
+  .forecast-block{margin-top:14px;padding:12px 14px;background:rgba(15,23,42,.55);border:1px solid var(--line);border-radius:10px;}
+  .forecast-hero{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:12px;margin-bottom:12px;}
+  .forecast-hero .fc-lab{font-size:10px;font-weight:700;color:var(--accent);letter-spacing:.4px;}
+  .forecast-hero .fc-val b{color:var(--gold);}
+  .forecast-hero .fc-sep{color:var(--muted);}
+  .forecast-hero .fc-xg{margin-left:auto;font-size:11px;color:var(--muted);}
+  .forecast-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .forecast-col .fc-t{width:100%;border-collapse:collapse;font-size:11px;}
+  .forecast-col .fc-t td{padding:5px 8px;border-bottom:1px dashed rgba(44,58,85,.6);}
+  .forecast-col .fc-t td:last-child{text-align:right;color:var(--green);}
+  @media(max-width:640px){.forecast-grid{grid-template-columns:1fr;}}
+  /* ── 赛果概率预估汇总（决策 HTML 顶部） ── */
+  .forecast-summary{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:20px;}
+  .fs-table{width:100%;border-collapse:collapse;font-size:12px;}
+  .fs-table th,.fs-table td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;}
+  .fs-table th{color:var(--muted);font-size:11px;font-weight:600;}
+  .fs-table tr.is-hero-row td{background:rgba(251,191,36,.08);border-bottom-color:rgba(251,191,36,.25);}
+  .fs-table tr.is-hero-row td:first-child{color:var(--gold);font-weight:700;}
+  .fs-table .w-col{color:var(--home);}
+  .fs-table .d-col{color:var(--grey);}
+  .fs-table .l-col{color:var(--away);}
+  .fs-table small{color:var(--muted);font-size:10px;}
+  .fs-note{font-size:11px;color:var(--muted);margin:10px 0 0;}
+  .hero-forecast{margin:10px 0 8px;padding:8px 12px;background:rgba(15,23,42,.55);border:1px solid var(--line);border-radius:8px;font-size:12px;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;}
+  .hero-forecast .hf-lab{font-size:10px;font-weight:700;color:var(--accent);letter-spacing:.3px;}
+  .hero-forecast .hf-wdl .w{color:var(--home);font-weight:600;}
+  .hero-forecast .hf-wdl .d{color:var(--grey);font-weight:600;}
+  .hero-forecast .hf-wdl .l{color:var(--away);font-weight:600;}
+  .hero-forecast .hf-sep{color:var(--muted);}
+  .hero-forecast .hf-xg{color:var(--muted);font-size:11px;}
+  .card-forecast{font-size:11px;color:var(--muted);margin:4px 0 8px;padding:6px 8px;background:rgba(15,23,42,.5);border-radius:6px;border:1px dashed var(--line);}
+  .card-forecast .w{color:var(--home);}
+  .card-forecast .d{color:var(--grey);}
+  .card-forecast .l{color:var(--away);}
+  /* ── 注单卡（保留原样） ── */
+  .bets{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:14px;margin-bottom:18px;}
+  .bet{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;transition:transform .15s ease;}
+  .bet:hover{transform:translateY(-3px);border-color:var(--accent);}
+  .bet .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+  .bet .id{background:var(--accent);color:#0b1220;font-weight:700;font-size:11px;padding:3px 9px;border-radius:6px;letter-spacing:.5px;}
+  .bet .league{color:var(--muted);font-size:12px;}
+  .bet .play{font-size:15px;font-weight:600;margin:6px 0 4px;}
+  .bet .pick{color:var(--gold);font-size:14px;margin-bottom:10px;}
+  .bet .row{display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-top:1px dashed var(--line);}
+  .bet .row span:first-child{color:var(--muted);}
+  .bet .row span:last-child{font-weight:600;}
+  .bet .amt{color:var(--gold);}
+  .bet .win{color:var(--green);}
+  .bet .lose{color:var(--red);}
+  .bet .bar{height:8px;background:#1c2942;border-radius:4px;overflow:hidden;margin:8px 0 4px;}
+  .bet .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--gold));}
+  .ov{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:20px;}
+  .ov .lab-row{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px;}
+  .ov .ov-bar{height:64px;display:flex;border-radius:8px;overflow:hidden;border:1px solid var(--line);}
+  .ov .seg{display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#0b1220;}
+  .ov .seg small{font-size:10px;font-weight:500;opacity:.85;}
+  .ov .legend{display:flex;justify-content:space-between;font-size:12px;margin-top:8px;color:var(--muted);}
+  .ov .legend b.lose{color:var(--red);}
+  .ov .legend b.win{color:var(--green);}
+  table.t{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:18px;}
+  table.t th,table.t td{padding:10px 12px;text-align:left;font-size:13px;border-bottom:1px solid var(--line);}
+  table.t th{background:#152033;color:var(--muted);font-weight:500;font-size:12px;letter-spacing:.3px;}
+  table.t tr:last-child td{border-bottom:none;}
+  table.t .pos{color:var(--green);}
+  table.t .neg{color:var(--red);}
+  table.t .neu{color:var(--grey);}
+  table.t tr.best td{background:rgba(251,191,36,.08);border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);}
+  table.t tr.best td:first-child{font-weight:700;color:var(--gold);}
+  .cut{background:var(--card-2);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:18px;}
+  .cut h3{margin:0 0 8px;font-size:13px;color:var(--muted);font-weight:500;}
+  .replay table.t td{color:var(--muted);}
+  footer{margin-top:36px;font-size:11px;color:var(--muted);text-align:center;line-height:1.6;}
+  footer .sep{margin:0 8px;color:var(--line);}
+  footer .validation-run{color:var(--gold);}
+  @keyframes warnIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}
+  @keyframes warnPulse{0%,100%{box-shadow:none;}50%{box-shadow:0 0 0 3px rgba(251,191,36,.25);}}
+  @keyframes kpiIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  @keyframes heroIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+  @keyframes rowIn{from{opacity:0;}to{opacity:1;}}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;}
+    .hero-pick:hover,.kpi .c:hover{transform:none;}
+  }
+  @media (max-width:375px){
+    .hero-pick{grid-template-columns:1fr;}
+    .hero-pick .right{text-align:left;}
+    .dim-bars{margin-left:0;}
+    .mini-dim{display:none;}
+    .detail-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:600px){
+    .kpi{grid-template-columns:1fr 1fr;}
+    .matchups{grid-template-columns:1fr;}
+    .cmp-row,.cmp-table .cmp-head{grid-template-columns:72px 1fr 72px;}
+    .bets{grid-template-columns:1fr;}
+    .ov .ov-bar{flex-direction:column;height:auto;}
+    .ov .seg{padding:6px;width:100%;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="h">
+  <h1>🇨🇳 投注决策 · 260618 · 防御型（覆盖 · 3–4 注）</h1>
+  <div class="sub">期号 2606181 · 扫描 270 候选 → Top6 → 组合单 4 注</div>
+  <div class="meta">
+    <div><b>骨架</b><br>A · 风险预算</div>
+    <div><b>本期投注</b><br><span class="num">200 元</span> / 预算 200 元</div>
+    <div><b>主推</b><br>组合 4 注</div>
+    <div><b>决策时间</b><br>v2.2 · T-5-9 双方案</div>
+  </div>
+</header>
+
+<section class="workflow-pipeline" id="workflow-pipeline" aria-label="PM 工作流">
+  <div class="wf-head">
+    <h2 class="wf-title">PM 工作流</h2>
+    <span class="wf-badge wf-ok">全流程通过</span>
+    <span class="wf-ts">更新 2026-06-18T22:08:09</span>
+  </div>
+  <ol class="wf-steps">
+<li class="wf-step pass"><span class="wf-id num">1.1</span><span class="wf-icon">✓</span><div class="wf-main"><span class="wf-name">采集体彩赔率</span><span class="wf-detail">odds_window_24h_20260618-220804.json · 4 场</span></div><span class="wf-status">PASS</span></li>
+<li class="wf-step pass"><span class="wf-id num">1.2</span><span class="wf-icon">✓</span><div class="wf-main"><span class="wf-name">采集球队基本面（ESPN）</span><span class="wf-detail">fundamentals_fifa.world_260619-merged.json · 4 场 · forecast 4 场</span></div><span class="wf-status">PASS</span></li>
+<li class="wf-step pass"><span class="wf-id num">1.3</span><span class="wf-icon">✓</span><div class="wf-main"><span class="wf-name">基本面 enrich · 8.7 预估赛果</span><span class="wf-detail">4 场含预估</span></div><span class="wf-status">PASS</span></li>
+<li class="wf-step pass"><span class="wf-id num">1.4</span><span class="wf-icon">✓</span><div class="wf-main"><span class="wf-name">阶段1 输入校验</span><span class="wf-detail">odds 就绪</span></div><span class="wf-status">PASS</span></li>
+<li class="wf-step pass"><span class="wf-id num">2.1</span><span class="wf-icon">✓</span><div class="wf-main"><span class="wf-name">五维预测引擎</span><span class="wf-detail">prediction_260619_20260618-220808.json · 4 场</span></div><span class="wf-status">PASS</span></li>
+<li class="wf-step pass"><span class="wf-id num">2.2</span><span class="wf-icon">✓</span><div class="wf-main"><span class="wf-name">预测档数据门禁</span><span class="wf-detail">PASS · run_id=20260618-220808</span></div><span class="wf-status">PASS</span></li>
+<li class="wf-step pass"><span class="wf-id num">3.1</span><span class="wf-icon">✓</span><div class="wf-main"><span class="wf-name">全玩法候选扫描</span><span class="wf-detail">scan_260619_20260618-220808.json · 候选 270 → 过闸 24</span></div><span class="wf-status">PASS</span></li>
+<li class="wf-step pass"><span class="wf-id num">3.2</span><span class="wf-icon">✓</span><div class="wf-main"><span class="wf-name">决策草案 JSON/HTML</span><span class="wf-detail">decision_260619_workflow_20260618-220808.json + decision_260619_workflow_20260618-220808.html</span></div><span class="wf-status">PASS</span></li>
+<li class="wf-step pass"><span class="wf-id num">3.3</span><span class="wf-icon">✓</span><div class="wf-main"><span class="wf-name">决策档门禁 · promote</span><span class="wf-detail">PASS · run_id=test-promote-ok · 已 promote</span></div><span class="wf-status">PASS</span></li>
+  </ol>
+  <p class="wf-note">模块 0 编排：数据 → 分析 → 投注 · 每步 PASS 后方可进入下一阶段</p>
+</section>
+<div class="warn" style="border-left-color:var(--accent);">
+  <b>⚠️ IMP-007/008 · 低赔稳档 / 引擎平概率披露</b>
+  <table class="t" style="margin-top:10px;font-size:12px;">
+    <thead><tr><th>场次</th><th>对阵</th><th>胜/负赔</th><th>平赔/平概率</th><th>稳档上限</th><th>建议</th></tr></thead>
+    <tbody><tr><td>周四027</td><td>加拿大 vs 卡塔尔</td><td class="num">1.17</td><td class="num">5.45</td><td class="num">≤25 元</td><td>稳档封顶 · 评估防平</td></tr><tr><td>周四025</td><td>捷克 vs 南非</td><td class="num">—</td><td class="num">26.3%</td><td>—</td><td>平概率偏高 → 优先减仓低赔胜选项，显式列出防平备选</td></tr><tr><td>周四027</td><td>加拿大 vs 卡塔尔</td><td class="num">—</td><td class="num">20.5%</td><td>—</td><td>平概率偏高 → 优先减仓低赔胜选项，显式列出防平备选</td></tr><tr><td>周四028</td><td>墨西哥 vs 韩国</td><td class="num">—</td><td class="num">30.8%</td><td>—</td><td>平概率偏高 → 优先减仓低赔胜选项，显式列出防平备选</td></tr></tbody>
+  </table>
+</div>
+
+<section class="portfolio-ticket" id="portfolio-ticket">
+  <h2>🎯 主推 · 防御型（覆盖 · 3–4 注）</h2>
+  <p class="hint">自动锁定防御型：不确定性 86%，加权 EV 防御 -22.8 ≥ 进攻 -22.9（含覆盖加成）。</p><p class="hint">备选：进攻型（爆发 · 1–2 注） · 2 注 · 200 元（对照，未锁定）</p>
+  <p class="hint">合计 <span class="num">200</span> 元 / 预算 200 元 · EV 加权分配</p>
+  <table class="t portfolio-table">
+    <thead><tr><th>注</th><th>比赛</th><th>玩法</th><th>选择</th><th>赔率</th><th>金额</th><th>命中奖</th><th>角色</th></tr></thead>
+    <tbody><tr><td><b>B1</b></td><td>周四025 捷克 vs 南非</td><td>不让球胜平负</td><td><b>胜</b></td><td class="num">1.59</td><td class="num"><b>82</b> 元</td><td class="num">130.38</td><td>主攻</td></tr><tr><td><b>B2</b></td><td>周四025 捷克 vs 南非</td><td>不让球胜平负</td><td><b>平</b></td><td class="num">3.55</td><td class="num"><b>48</b> 元</td><td class="num">170.4</td><td>防冷</td></tr><tr><td><b>B3</b></td><td>周四027 加拿大 vs 卡塔尔</td><td>不让球胜平负</td><td><b>胜</b></td><td class="num">1.17</td><td class="num"><b>24</b> 元</td><td class="num">28.08</td><td>主攻</td></tr><tr><td><b>B4</b></td><td>周四027 加拿大 vs 卡塔尔</td><td>不让球胜平负</td><td><b>平</b></td><td class="num">5.45</td><td class="num"><b>46</b> 元</td><td class="num">250.7</td><td>防冷</td></tr></tbody>
+  </table>
+  <div class="warn" style="margin-top:12px;">
+    <b>互斥提示</b><ul style="margin:8px 0 0;padding-left:18px;"><li><b>周四025</b>：B1, B2 最多中 1 注</li><li><b>周四027</b>：B3, B4 最多中 1 注</li></ul>
+  </div>
+</section>
+
+
+<div class="kpi">
+  <div class="c gold"><div class="lab">主推 EV</div><div class="v num">-11.4%</div></div>
+  <div class="c green"><div class="lab">p_true</div><div class="v num">55.7%</div></div>
+  <div class="c red"><div class="lab">未中亏损</div><div class="v num">−100 元</div></div>
+  <div class="c grey"><div class="lab">综合分 Top1</div><div class="v num">76.4</div></div>
+</div>
+
+<h2>📈 赛果概率预估<span class="hint">引擎五维 + xG · 基本面 Agent 8.7</span></h2>
+
+<div class="forecast-summary" id="forecast-summary">
+<table class="fs-table">
+  <thead>
+    <tr>
+      <th>场次</th><th>对阵</th>
+      <th class="w-col">胜</th><th class="d-col">平</th><th class="l-col">负</th>
+      <th>预估比分</th><th>总进球</th><th>xG</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr class="is-hero-row"><td class="num">周四025</td><td>捷克 vs 南非</td><td class="num w-col">50.5%</td><td class="num d-col">26.3%</td><td class="num l-col">23.1%</td><td class="num"><b>1:0</b> <small>(31.0%)</small></td><td class="num"><b>1</b></td><td class="num">1.44:1.06</td></tr>
+<tr><td class="num">周四026</td><td>瑞士 vs 波黑</td><td class="num w-col">52.5%</td><td class="num d-col">24.5%</td><td class="num l-col">23.0%</td><td class="num"><b>1:0</b> <small>(31.9%)</small></td><td class="num"><b>1</b></td><td class="num">1.46:1.04</td></tr>
+<tr><td class="num">周四027</td><td>加拿大 vs 卡塔尔</td><td class="num w-col">64.7%</td><td class="num d-col">20.5%</td><td class="num l-col">14.8%</td><td class="num"><b>1:0</b> <small>(37.0%)</small></td><td class="num"><b>1</b></td><td class="num">1.32:1.18</td></tr>
+<tr><td class="num">周四028</td><td>墨西哥 vs 韩国</td><td class="num w-col">43.6%</td><td class="num d-col">30.8%</td><td class="num l-col">25.7%</td><td class="num"><b>1:0</b> <small>(27.2%)</small></td><td class="num"><b>1</b></td><td class="num">1.2:1.3</td></tr>
+  </tbody>
+</table>
+<p class="fs-note">胜平负为五维引擎概率；比分/总进球来自 xG 泊松 · 高亮行为本期主推场次</p>
+</div>
+
+<section class="hero-pick" id="hero-pick" data-scheme-id="S1" tabindex="0" aria-label="最终推荐">
+  <div>
+    <div class="eyebrow">单注参考 · 漏斗 S1</div>
+    <div class="title">周四025 · 捷克 vs 南非</div>
+    <div class="pick-line">胜 @ <span class="num">1.59</span></div>
+    <div class="hero-forecast" id="hero-forecast">
+  <span class="hf-lab">引擎赛果预估</span>
+  <span class="hf-wdl">
+    <span class="w">胜 50.5%</span>
+    <span class="d">平 26.3%</span>
+    <span class="l">负 23.1%</span>
+  </span>
+  <span class="hf-sep">·</span>
+  <span>比分 <b>1:0</b> (31.0%)</span>
+  <span class="hf-sep">·</span>
+  <span>总进球 <b>1</b></span>
+  <span class="hf-sep">·</span>
+  <span class="hf-xg num">xG 1.44:1.06</span>
+</div>
+    <div class="meta-line">scheme <b>S1</b> · 引擎 Top1 同向 · scan funnel</div>
+  </div>
+  <div class="right">
+    <div class="amt num" id="hero-amt">100</div>
+    <div class="amt-lab">建议金额（元）</div>
+    <div class="score-val num" id="hero-score">76.4</div>
+    <div class="dim-bars" id="hero-dims">
+      <div class="dim-row"><span>EV</span><div class="db"><i style="--w:100.0%"></i></div><span class="num">100</span></div>
+      <div class="dim-row"><span>引擎</span><div class="db"><i style="--w:100.0%"></i></div><span class="num">100</span></div>
+      <div class="dim-row"><span>基本面</span><div class="db"><i style="--w:57.2%"></i></div><span class="num">57</span></div>
+      <div class="dim-row"><span>独立性</span><div class="db"><i style="--w:4%"></i></div><span class="num">0</span></div>
+    </div>
+  </div>
+</section>
+
+<h2>Top 3 赢利方案（供选择）<span class="hint">按参考注额×赔率 · 命中毛奖金降序</span></h2>
+<div class="top3-picks" id="top3-picks">
+  <div class="top3-card" data-scheme-id="S3" data-candidate-id="C0003" tabindex="0" role="button" aria-label="方案 A（赢利最高）">
+    <div class="card-head">
+      <span class="card-label">方案 A（赢利最高）</span>
+      
+    </div>
+    <div class="match-line num">周四025 · 捷克 vs 南非</div>
+    <div class="card-forecast">引擎 <span class="w">胜50.5%</span> <span class="d">平26.3%</span> <span class="l">负23.1%</span> · 比分 1:0</div>
+    <div class="pick-line">负 @ <span class="num">4.58</span></div>
+    <div class="win-gross num">458.0 元</div>
+    <div class="win-lab">命中毛奖金（建议 100 元）</div>
+    <div class="stat-row"><span>建议金额</span><span class="amt num">100 元</span></div>
+    <div class="stat-row"><span>p_true</span><span class="num">19.3%</span></div>
+    <div class="stat-row"><span>EV</span><span class="num">-11.4%</span></div>
+    <div class="stat-row"><span>综合分</span><span class="num">61.4</span></div>
+    <div class="ref-note">参考排序：100 元 × 4.58 = 458.0 元</div>
+  </div>
+  <div class="top3-card" data-scheme-id="S2" data-candidate-id="C0002" tabindex="0" role="button" aria-label="方案 B">
+    <div class="card-head">
+      <span class="card-label">方案 B</span>
+      
+    </div>
+    <div class="match-line num">周四025 · 捷克 vs 南非</div>
+    <div class="card-forecast">引擎 <span class="w">胜50.5%</span> <span class="d">平26.3%</span> <span class="l">负23.1%</span> · 比分 1:0</div>
+    <div class="pick-line">平 @ <span class="num">3.55</span></div>
+    <div class="win-gross num">177.5 元</div>
+    <div class="win-lab">命中毛奖金（建议 50 元）</div>
+    <div class="stat-row"><span>建议金额</span><span class="amt num">50 元</span></div>
+    <div class="stat-row"><span>p_true</span><span class="num">24.9%</span></div>
+    <div class="stat-row"><span>EV</span><span class="num">-11.4%</span></div>
+    <div class="stat-row"><span>综合分</span><span class="num">61.4</span></div>
+    <div class="ref-note">参考排序：100 元 × 3.55 = 355.0 元</div>
+  </div>
+  <div class="top3-card" data-scheme-id="S6" data-candidate-id="C0164" tabindex="0" role="button" aria-label="方案 C">
+    <div class="card-head">
+      <span class="card-label">方案 C</span>
+      
+    </div>
+    <div class="match-line num">周四028 · 墨西哥 vs 韩国</div>
+    <div class="card-forecast">引擎 <span class="w">胜43.6%</span> <span class="d">平30.8%</span> <span class="l">负25.7%</span> · 比分 1:0</div>
+    <div class="pick-line">平 @ <span class="num">2.8</span></div>
+    <div class="win-gross num">140.0 元</div>
+    <div class="win-lab">命中毛奖金（建议 50 元）</div>
+    <div class="stat-row"><span>建议金额</span><span class="amt num">50 元</span></div>
+    <div class="stat-row"><span>p_true</span><span class="num">31.6%</span></div>
+    <div class="stat-row"><span>EV</span><span class="num">-11.4%</span></div>
+    <div class="stat-row"><span>综合分</span><span class="num">28.6</span></div>
+    <div class="ref-note">参考排序：100 元 × 2.8 = 280.0 元</div>
+  </div>
+</div>
+
+<p class="hero-ribbon" id="hero-ribbon" aria-live="polite">悬停 Top6 行可对比落选方案 · 点击 Top3 卡或 Top6 行联动主推区</p>
+
+<h2>🏆 Top 6 漏斗</h2>
+<div class="top6-wrap">
+<table class="top6">
+  <thead><tr><th>#</th><th>玩法</th><th>选项</th><th>EV</th><th>综合分</th><th>四维</th><th>状态</th></tr></thead>
+  <tbody id="top6-body">
+    <tr class="top6-row hero-link is-active" data-scheme-id="S1" data-score="76.4" data-amt="50"
+        data-dims="100.0,100.0,57.2,0" data-label="025 胜" data-odds="1.59" tabindex="0">
+      <td class="num">1</td>
+      <td><span class="play-type"><span class="play-dot" style="background:var(--play-wdl)"></span>不让</span></td>
+      <td>025 胜</td>
+      <td class="ev-must num">-11.4%</td>
+      <td class="num">76.4</td>
+      <td><div class="mini-dim"><i><b style="--w:100.0%"></b></i><i><b style="--w:100.0%"></b></i><i><b style="--w:57.2%"></b></i><i><b style="--w:4%"></b></i></div></td>
+      <td><span class="status hero">主推</span></td>
+    </tr>
+    <tr class="top6-detail" data-for="S1"><td colspan="7"><div class="detail-inner">
+      <div class="detail-grid">
+        <div>EV<b class="num">100</b></div><div>引擎<b class="num">100</b></div>
+        <div>基本面<b class="num">57</b></div><div>独立<b class="num">0</b></div>
+      </div></div></td></tr>
+    <tr class="top6-row" data-scheme-id="S2" data-score="61.4" data-amt="50"
+        data-dims="100.0,40.0,57.2,0" data-label="025 平" data-odds="3.55" tabindex="0">
+      <td class="num">2</td>
+      <td><span class="play-type"><span class="play-dot" style="background:var(--play-wdl)"></span>不让</span></td>
+      <td>025 平</td>
+      <td class="ev-must num">-11.4%</td>
+      <td class="num">61.4</td>
+      <td><div class="mini-dim"><i><b style="--w:100.0%"></b></i><i><b style="--w:40.0%"></b></i><i><b style="--w:57.2%"></b></i><i><b style="--w:4%"></b></i></div></td>
+      <td><span class="status in">入围</span></td>
+    </tr>
+    <tr class="top6-detail" data-for="S2"><td colspan="7"><div class="detail-inner">
+      <div class="detail-grid">
+        <div>EV<b class="num">100</b></div><div>引擎<b class="num">40</b></div>
+        <div>基本面<b class="num">57</b></div><div>独立<b class="num">0</b></div>
+      </div><p style="margin:8px 0 0;font-size:11px;color:var(--muted);">落选原因：综合分 61.4 < 主推 76.4。</p></div></td></tr>
+    <tr class="top6-row" data-scheme-id="S3" data-score="61.4" data-amt="50"
+        data-dims="100.0,40.0,57.2,0" data-label="025 负" data-odds="4.58" tabindex="0">
+      <td class="num">3</td>
+      <td><span class="play-type"><span class="play-dot" style="background:var(--play-wdl)"></span>不让</span></td>
+      <td>025 负</td>
+      <td class="ev-must num">-11.4%</td>
+      <td class="num">61.4</td>
+      <td><div class="mini-dim"><i><b style="--w:100.0%"></b></i><i><b style="--w:40.0%"></b></i><i><b style="--w:57.2%"></b></i><i><b style="--w:4%"></b></i></div></td>
+      <td><span class="status in">入围</span></td>
+    </tr>
+    <tr class="top6-detail" data-for="S3"><td colspan="7"><div class="detail-inner">
+      <div class="detail-grid">
+        <div>EV<b class="num">100</b></div><div>引擎<b class="num">40</b></div>
+        <div>基本面<b class="num">57</b></div><div>独立<b class="num">0</b></div>
+      </div><p style="margin:8px 0 0;font-size:11px;color:var(--muted);">落选原因：综合分 61.4 < 主推 76.4。</p></div></td></tr>
+    <tr class="top6-row" data-scheme-id="S4" data-score="37.2" data-amt="50"
+        data-dims="0.0,100.0,61.0,0" data-label="027 胜" data-odds="1.17" tabindex="0">
+      <td class="num">4</td>
+      <td><span class="play-type"><span class="play-dot" style="background:var(--play-wdl)"></span>不让</span></td>
+      <td>027 胜</td>
+      <td class="ev-must num">-11.4%</td>
+      <td class="num">37.2</td>
+      <td><div class="mini-dim"><i><b style="--w:0.0%"></b></i><i><b style="--w:100.0%"></b></i><i><b style="--w:61.0%"></b></i><i><b style="--w:4%"></b></i></div></td>
+      <td><span class="status in">入围</span></td>
+    </tr>
+    <tr class="top6-detail" data-for="S4"><td colspan="7"><div class="detail-inner">
+      <div class="detail-grid">
+        <div>EV<b class="num">0</b></div><div>引擎<b class="num">100</b></div>
+        <div>基本面<b class="num">61</b></div><div>独立<b class="num">0</b></div>
+      </div><p style="margin:8px 0 0;font-size:11px;color:var(--muted);">落选原因：综合分 37.2 < 主推 76.4。</p></div></td></tr>
+    <tr class="top6-row" data-scheme-id="S5" data-score="36.1" data-amt="50"
+        data-dims="0.0,100.0,55.7,0" data-label="028 胜" data-odds="1.94" tabindex="0">
+      <td class="num">5</td>
+      <td><span class="play-type"><span class="play-dot" style="background:var(--play-wdl)"></span>不让</span></td>
+      <td>028 胜</td>
+      <td class="ev-must num">-11.4%</td>
+      <td class="num">36.1</td>
+      <td><div class="mini-dim"><i><b style="--w:0.0%"></b></i><i><b style="--w:100.0%"></b></i><i><b style="--w:55.7%"></b></i><i><b style="--w:4%"></b></i></div></td>
+      <td><span class="status in">入围</span></td>
+    </tr>
+    <tr class="top6-detail" data-for="S5"><td colspan="7"><div class="detail-inner">
+      <div class="detail-grid">
+        <div>EV<b class="num">0</b></div><div>引擎<b class="num">100</b></div>
+        <div>基本面<b class="num">56</b></div><div>独立<b class="num">0</b></div>
+      </div><p style="margin:8px 0 0;font-size:11px;color:var(--muted);">落选原因：综合分 36.1 < 主推 76.4。</p></div></td></tr>
+    <tr class="top6-row" data-scheme-id="S6" data-score="28.6" data-amt="50"
+        data-dims="0.0,70.0,55.7,0" data-label="028 平" data-odds="2.8" tabindex="0">
+      <td class="num">6</td>
+      <td><span class="play-type"><span class="play-dot" style="background:var(--play-wdl)"></span>不让</span></td>
+      <td>028 平</td>
+      <td class="ev-must num">-11.4%</td>
+      <td class="num">28.6</td>
+      <td><div class="mini-dim"><i><b style="--w:0.0%"></b></i><i><b style="--w:70.0%"></b></i><i><b style="--w:55.7%"></b></i><i><b style="--w:4%"></b></i></div></td>
+      <td><span class="status in">入围</span></td>
+    </tr>
+    <tr class="top6-detail" data-for="S6"><td colspan="7"><div class="detail-inner">
+      <div class="detail-grid">
+        <div>EV<b class="num">0</b></div><div>引擎<b class="num">70</b></div>
+        <div>基本面<b class="num">56</b></div><div>独立<b class="num">0</b></div>
+      </div><p style="margin:8px 0 0;font-size:11px;color:var(--muted);">落选原因：综合分 28.6 < 主推 76.4。</p></div></td></tr>
+  </tbody>
+</table>
+</div>
+<p style="font-size:12px;color:var(--muted);margin:0 0 20px;">扫描 270 候选 · 过闸 24 · EV 闸砍 246</p>
+
+<h2>⚔️ 对阵基本面与预估赛果</h2>
+<div class="matchups">
+  <div class="matchup focus">
+    <div class="mu-top">
+      <span class="mu-id">周四025</span>
+      <div class="mu-teams">
+        <div class="team-side home"><div class="t-name">捷克</div><div class="t-sub">主队</div></div>
+        <span class="vs-badge">VS</span>
+        <div class="team-side away"><div class="t-name">南非</div><div class="t-sub">客队</div></div>
+      </div>
+    </div>
+    <div class="mu-tags">
+      <span class="tag bet">主推场次 · S1</span>
+      <span class="tag hot">引擎 Top1 主胜 50.5%</span>
+    </div>
+    <div class="cmp-table">
+      <div class="cmp-head"><span class="home-h">捷克</span><span>对比参数</span><span class="away-h">南非</span></div>
+      <div class="cmp-row">
+        <span class="cmp-val home win">73</span>
+        <div><div class="cmp-label">硬实力 / 综合指数</div>
+          <div class="cmp-bar-box"><div class="seg-h" style="width:69.3%;"></div><div class="seg-a" style="width:30.7%;"></div></div></div>
+        <span class="cmp-val away">32.3</span>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-val home win">55.7%</span>
+        <div><div class="cmp-label">体彩去水胜率</div>
+          <div class="cmp-bar-box"><div class="seg-h" style="width:74.2%;"></div><div class="seg-a" style="width:25.8%;"></div></div></div>
+        <span class="cmp-val away">19.3%</span>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-val home win">50.5%</span>
+        <div><div class="cmp-label">引擎综合胜率</div>
+          <div class="cmp-bar-box"><div class="seg-h" style="width:68.6%;"></div><div class="seg-a" style="width:31.4%;"></div></div></div>
+        <span class="cmp-val away">23.1%</span>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-val home">1.44</span>
+        <div><div class="cmp-label">预期进球 xG</div>
+          <div class="cmp-bar-box"><div class="seg-h" style="width:57.6%;"></div><div class="seg-a" style="width:42.4%;"></div></div></div>
+        <span class="cmp-val away win">1.06</span>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:10px 12px;background:rgba(15,23,42,.6);border-radius:8px;border:1px solid var(--line);">
+      <div class="cmp-label" style="margin-bottom:6px;">胜平负概率（引擎）</div>
+      <div class="prob-1x2">
+        <div class="p-row"><span class="p-lab">胜</span><div class="p-bar"><i class="win-i" style="width:50.5%;"></i></div><span class="p-val num">50.5%</span></div>
+        <div class="p-row"><span class="p-lab">平</span><div class="p-bar"><i class="draw-i" style="width:26.3%;"></i></div><span class="p-val num">26.3%</span></div>
+        <div class="p-row"><span class="p-lab">负</span><div class="p-bar"><i class="lose-i" style="width:23.1%;"></i></div><span class="p-val num">23.1%</span></div>
+      </div>
+    </div>
+    
+    <div class="forecast-block">
+      <div class="forecast-hero">
+        <span class="fc-lab">预估赛果</span>
+        <span class="fc-val">胜平负 <b>胜</b> (50.5%)</span>
+        <span class="fc-sep">·</span>
+        <span class="fc-val">总进球 <b>1</b> (25.7%)</span>
+        <span class="fc-sep">·</span>
+        <span class="fc-val">比分 <b>1:0</b> (31.0%)</span>
+        <span class="fc-xg num">xG 1.44 : 1.06</span>
+      </div>
+      <div class="forecast-grid">
+        <div class="forecast-col">
+          <div class="cmp-label">最热比分 Top5</div>
+          <table class="fc-t"><tbody><tr><td>1:1</td><td class="num">12.5%</td></tr><tr><td>1:0</td><td class="num">11.8%</td></tr><tr><td>2:1</td><td class="num">9.0%</td></tr><tr><td>0:1</td><td class="num">8.7%</td></tr><tr><td>2:0</td><td class="num">8.5%</td></tr></tbody></table>
+        </div>
+        <div class="forecast-col">
+          <div class="cmp-label">总进球分布 Top5</div>
+          <table class="fc-t"><tbody><tr><td>2球</td><td class="num">25.7%</td></tr><tr><td>3球</td><td class="num">21.4%</td></tr><tr><td>1球</td><td class="num">20.5%</td></tr><tr><td>4球</td><td class="num">13.4%</td></tr><tr><td>0球</td><td class="num">8.2%</td></tr></tbody></table>
+        </div>
+      </div>
+    </div>
+    <div class="mu-foot">
+      <span>主推场次 周四025</span>
+      <span>综合主队优势 <b class="num">57.2</b>/100</span>
+    </div>
+  </div>
+
+  <div class="matchup">
+    <div class="mu-top">
+      <span class="mu-id">周四026</span>
+      <div class="mu-teams">
+        <div class="team-side home"><div class="t-name">瑞士</div><div class="t-sub">主队</div></div>
+        <span class="vs-badge">VS</span>
+        <div class="team-side away"><div class="t-name">波黑</div><div class="t-sub">客队</div></div>
+      </div>
+    </div>
+    <div class="cmp-table">
+      <div class="cmp-head"><span class="home-h">瑞士</span><span>对比参数</span><span class="away-h">波黑</span></div>
+      <div class="cmp-row">
+        <span class="cmp-val home win">41</span>
+        <div><div class="cmp-label">硬实力 / 综合指数</div>
+          <div class="cmp-bar-box"><div class="seg-h" style="width:44.6%;"></div><div class="seg-a" style="width:55.4%;"></div></div></div>
+        <span class="cmp-val away">51.0</span>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-val home win">64.6%</span>
+        <div><div class="cmp-label">体彩去水胜率</div>
+          <div class="cmp-bar-box"><div class="seg-h" style="width:83.0%;"></div><div class="seg-a" style="width:17.0%;"></div></div></div>
+        <span class="cmp-val away">13.2%</span>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-val home win">52.5%</span>
+        <div><div class="cmp-label">引擎综合胜率</div>
+          <div class="cmp-bar-box"><div class="seg-h" style="width:69.5%;"></div><div class="seg-a" style="width:30.5%;"></div></div></div>
+        <span class="cmp-val away">23.0%</span>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-val home">1.46</span>
+        <div><div class="cmp-label">预期进球 xG</div>
+          <div class="cmp-bar-box"><div class="seg-h" style="width:58.4%;"></div><div class="seg-a" style="width:41.6%;"></div></div></div>
+        <span class="cmp-val away win">1.04</span>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:10px 12px;background:rgba(15,23,42,.6);border-radius:8px;border:1px solid var(--line);">
+      <div class="cmp-label" style="margin-bottom:6px;">胜平负概率（引擎）</div>
+      <div class="prob-1x2">
+        <div class="p-row"><span class="p-lab">胜</span><div class="p-bar"><i class="win-i" style="width:52.5%;"></i></div><span class="p-val num">52.5%</span></div>
+        <div class="p-row"><span class="p-lab">平</span><div class="p-bar"><i class="draw-i" style="width:24.5%;"></i></div><span class="p-val num">24.5%</span></div>
+        <div class="p-row"><span class="p-lab">负</span><div class="p-bar"><i class="lose-i" style="width:23.0%;"></i></div><span class="p-val num">23.0%</span></div>
+      </div>
+    </div>
+    
+    <div class="forecast-block">
+      <div class="forecast-hero">
+        <span class="fc-lab">预估赛果</span>
+        <span class="fc-val">胜平负 <b>胜</b> (52.5%)</span>
+        <span class="fc-sep">·</span>
+        <span class="fc-val">总进球 <b>1</b> (25.7%)</span>
+        <span class="fc-sep">·</span>
+        <span class="fc-val">比分 <b>1:0</b> (31.9%)</span>
+        <span class="fc-xg num">xG 1.46 : 1.04</span>
+      </div>
+      <div class="forecast-grid">
+        <div class="forecast-col">
+          <div class="cmp-label">最热比分 Top5</div>
+          <table class="fc-t"><tbody><tr><td>1:1</td><td class="num">12.5%</td></tr><tr><td>1:0</td><td class="num">12.0%</td></tr><tr><td>2:1</td><td class="num">9.1%</td></tr><tr><td>2:0</td><td class="num">8.7%</td></tr><tr><td>0:1</td><td class="num">8.5%</td></tr></tbody></table>
+        </div>
+        <div class="forecast-col">
+          <div class="cmp-label">总进球分布 Top5</div>
+          <table class="fc-t"><tbody><tr><td>2球</td><td class="num">25.7%</td></tr><tr><td>3球</td><td class="num">21.4%</td></tr><tr><td>1球</td><td class="num">20.5%</td></tr><tr><td>4球</td><td class="num">13.4%</td></tr><tr><td>0球</td><td class="num">8.2%</td></tr></tbody></table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup">
+    <div class="mu-top">
+      <span class="mu-id">周四027</span>
+      <div class="mu-teams">
+        <div class="team-side home"><div class="t-name">加拿大</div><div class="t-sub">主队</div></div>
+        <span class="vs-badge">VS</span>
+        <div class="team-side away"><div class="t-name">卡塔尔</div><div class="t-sub">客队</div></div>
+      </div>
+    </div>
+    <div class="cmp-table">
+      <div class="cmp-head"><span class="home-h">加拿大</span><span>对比参数</span><span class="away-h">卡塔尔</span></div>
+      <div class="cmp-row">
+        <span class="cmp-val home win">42</span>
+        <div><div class="cmp-label">硬实力 / 综合指数</div>
+          <div class="cmp-bar-box"><div class="seg-h" style="width:54.2%;"></div><div class="seg-a" style="width:45.8%;"></div></div></div>
+        <span class="cmp-val away">35.3</span>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-val home win">75.7%</span>
+        <div><div class="cmp-label">体彩去水胜率</div>
+          <div class="cmp-bar-box"><div class="seg-h" style="width:90.4%;"></div><div class="seg-a" style="width:9.6%;"></div></div></div>
+        <span class="cmp-val away">8.1%</span>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-val home win">64.7%</span>
+        <div><div class="cmp-label">引擎综合胜率</div>
+          <div class="cmp-bar-box"><div class="seg-h" style="width:81.4%;"></div><div class="seg-a" style="width:18.6%;"></div></div></div>
+        <span class="cmp-val away">14.8%</span>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-val home">1.32</span>
+        <div><div class="cmp-label">预期进球 xG</div>
+          <div class="cmp-bar-box"><div class="seg-h" style="width:52.8%;"></div><div class="seg-a" style="width:47.2%;"></div></div></div>
+        <span class="cmp-val away win">1.18</span>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:10px 12px;background:rgba(15,23,42,.6);border-radius:8px;border:1px solid var(--line);">
+      <div class="cmp-label" style="margin-bottom:6px;">胜平负概率（引擎）</div>
+      <div class="prob-1x2">
+        <div class="p-row"><span class="p-lab">胜</span><div class="p-bar"><i class="win-i" style="width:64.7%;"></i></div><span class="p-val num">64.7%</span></div>
+        <div class="p-row"><span class="p-lab">平</span><div class="p-bar"><i class="draw-i" style="width:20.5%;"></i></div><span class="p-val num">20.5%</span></div>
+        <div class="p-row"><span class="p-lab">负</span><div class="p-bar"><i class="lose-i" style="width:14.8%;"></i></div><span class="p-val num">14.8%</span></div>
+      </div>
+    </div>
+    
+    <div class="forecast-block">
+      <div class="forecast-hero">
+        <span class="fc-lab">预估赛果</span>
+        <span class="fc-val">胜平负 <b>胜</b> (64.7%)</span>
+        <span class="fc-sep">·</span>
+        <span class="fc-val">总进球 <b>1</b> (25.7%)</span>
+        <span class="fc-sep">·</span>
+        <span class="fc-val">比分 <b>1:0</b> (37.0%)</span>
+        <span class="fc-xg num">xG 1.32 : 1.18</span>
+      </div>
+      <div class="forecast-grid">
+        <div class="forecast-col">
+          <div class="cmp-label">最热比分 Top5</div>
+          <table class="fc-t"><tbody><tr><td>1:1</td><td class="num">12.8%</td></tr><tr><td>1:0</td><td class="num">10.8%</td></tr><tr><td>0:1</td><td class="num">9.7%</td></tr><tr><td>2:1</td><td class="num">8.4%</td></tr><tr><td>0:0</td><td class="num">8.2%</td></tr></tbody></table>
+        </div>
+        <div class="forecast-col">
+          <div class="cmp-label">总进球分布 Top5</div>
+          <table class="fc-t"><tbody><tr><td>2球</td><td class="num">25.7%</td></tr><tr><td>3球</td><td class="num">21.4%</td></tr><tr><td>1球</td><td class="num">20.5%</td></tr><tr><td>4球</td><td class="num">13.4%</td></tr><tr><td>0球</td><td class="num">8.2%</td></tr></tbody></table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup">
+    <div class="mu-top">
+      <span class="mu-id">周四028</span>
+      <div class="mu-teams">
+        <div class="team-side home"><div class="t-name">墨西哥</div><div class="t-sub">主队</div></div>
+        <span class="vs-badge">VS</span>
+        <div class="team-side away"><div class="t-name">韩国</div><div class="t-sub">客队</div></div>
+      </div>
+    </div>
+    <div class="cmp-table">
+      <div class="cmp-head"><span class="home-h">墨西哥</span><span>对比参数</span><span class="away-h">韩国</span></div>
+      <div class="cmp-row">
+        <span class="cmp-val home win">83</span>
+        <div><div class="cmp-label">硬实力 / 综合指数</div>
+          <div class="cmp-bar-box"><div class="seg-h" style="width:55.2%;"></div><div class="seg-a" style="width:44.8%;"></div></div></div>
+        <span class="cmp-val away">67.0</span>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-val home win">45.7%</span>
+        <div><div class="cmp-label">体彩去水胜率</div>
+          <div class="cmp-bar-box"><div class="seg-h" style="width:66.8%;"></div><div class="seg-a" style="width:33.2%;"></div></div></div>
+        <span class="cmp-val away">22.7%</span>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-val home win">43.6%</span>
+        <div><div class="cmp-label">引擎综合胜率</div>
+          <div class="cmp-bar-box"><div class="seg-h" style="width:62.9%;"></div><div class="seg-a" style="width:37.1%;"></div></div></div>
+        <span class="cmp-val away">25.7%</span>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-val home">1.20</span>
+        <div><div class="cmp-label">预期进球 xG</div>
+          <div class="cmp-bar-box"><div class="seg-h" style="width:48.0%;"></div><div class="seg-a" style="width:52.0%;"></div></div></div>
+        <span class="cmp-val away win">1.30</span>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:10px 12px;background:rgba(15,23,42,.6);border-radius:8px;border:1px solid var(--line);">
+      <div class="cmp-label" style="margin-bottom:6px;">胜平负概率（引擎）</div>
+      <div class="prob-1x2">
+        <div class="p-row"><span class="p-lab">胜</span><div class="p-bar"><i class="win-i" style="width:43.6%;"></i></div><span class="p-val num">43.6%</span></div>
+        <div class="p-row"><span class="p-lab">平</span><div class="p-bar"><i class="draw-i" style="width:30.8%;"></i></div><span class="p-val num">30.8%</span></div>
+        <div class="p-row"><span class="p-lab">负</span><div class="p-bar"><i class="lose-i" style="width:25.7%;"></i></div><span class="p-val num">25.7%</span></div>
+      </div>
+    </div>
+    
+    <div class="forecast-block">
+      <div class="forecast-hero">
+        <span class="fc-lab">预估赛果</span>
+        <span class="fc-val">胜平负 <b>胜</b> (43.6%)</span>
+        <span class="fc-sep">·</span>
+        <span class="fc-val">总进球 <b>1</b> (25.7%)</span>
+        <span class="fc-sep">·</span>
+        <span class="fc-val">比分 <b>1:0</b> (27.2%)</span>
+        <span class="fc-xg num">xG 1.2 : 1.3</span>
+      </div>
+      <div class="forecast-grid">
+        <div class="forecast-col">
+          <div class="cmp-label">最热比分 Top5</div>
+          <table class="fc-t"><tbody><tr><td>1:1</td><td class="num">12.8%</td></tr><tr><td>0:1</td><td class="num">10.7%</td></tr><tr><td>1:0</td><td class="num">9.9%</td></tr><tr><td>1:2</td><td class="num">8.3%</td></tr><tr><td>0:0</td><td class="num">8.2%</td></tr></tbody></table>
+        </div>
+        <div class="forecast-col">
+          <div class="cmp-label">总进球分布 Top5</div>
+          <table class="fc-t"><tbody><tr><td>2球</td><td class="num">25.7%</td></tr><tr><td>3球</td><td class="num">21.4%</td></tr><tr><td>1球</td><td class="num">20.5%</td></tr><tr><td>4球</td><td class="num">13.4%</td></tr><tr><td>0球</td><td class="num">8.2%</td></tr></tbody></table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>📊 主推单注 · 结局条</h2>
+<div class="ov">
+  <div class="lab-row"><span>胜 @ 1.59 · 100 元</span><span class="num">100%</span></div>
+  <div class="ov-bar">
+    <div class="seg" style="width:44.3%;background:#dc2626;color:#fff;">未中<small>−100 · 44%</small></div>
+    <div class="seg" style="width:55.7%;background:#22c55e;color:#fff;">命中<small>+59.0 · 56%</small></div>
+  </div>
+</div>
+
+<div class="cut">
+  <b>被砍统计</b> · reject_below 砍掉 246 注（总进球/比分/串关为主）
+</div>
+
+<footer>
+  <span>football-betting-strategist v2.1 · T-6-7 Top3</span>
+  <span class="sep">|</span>
+  <span>数据：odds_window_24h_20260618-220804.json</span>
+  <span class="sep">|</span>
+  <span>预测：/Users/CursorProject/football/prediction_260619_20260618-220808.json</span>
+  <br>
+  <span class="validation-run">validation_run_id=20260618-220809</span>
+  <br>
+  <span style="margin-top:6px;display:inline-block;">本报告非投资建议；竞彩长期 EV 为负；金额自担。</span>
+</footer>
+
+</div>
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduced) {
+    requestAnimationFrame(function(){ document.body.classList.add('bars-ready'); });
+  } else {
+    document.body.classList.add('bars-ready');
+    document.querySelectorAll('[style*="--w"]').forEach(function(el){
+      var w = el.style.getPropertyValue('--w');
+      if (w) el.style.width = w;
+    });
+  }
+
+  var hero = document.getElementById('hero-pick');
+  var ribbon = document.getElementById('hero-ribbon');
+  if (!hero || !ribbon) return;
+
+  var rows = document.querySelectorAll('.top6-row[data-scheme-id]');
+  var heroScheme = hero.dataset.schemeId;
+  var heroDefaults = {
+    pick: hero.querySelector('.pick-line').innerHTML,
+    amt: document.getElementById('hero-amt').textContent,
+    score: document.getElementById('hero-score').textContent,
+    dims: Array.prototype.map.call(hero.querySelectorAll('.dim-row .db i'), function(b){
+      return b.style.getPropertyValue('--w') || '0';
+    })
+  };
+
+  function setHeroFromRow(row) {
+    if (!row || row.classList.contains('cut-row')) return;
+    var dims = (row.dataset.dims || '').split(',');
+    var odds = row.dataset.odds || '—';
+    document.getElementById('hero-amt').textContent = row.dataset.amt;
+    document.getElementById('hero-score').textContent = row.dataset.score;
+    var bars = hero.querySelectorAll('.dim-row .db i');
+    dims.forEach(function(v, i){ if (bars[i]) bars[i].style.setProperty('--w', v + '%'); });
+    if (row.dataset.schemeId === heroScheme) {
+      hero.classList.add('is-linked');
+      ribbon.innerHTML = '当前为 <strong>主推 ' + heroScheme + '</strong> · 与 Top6 第 1 行联动';
+      hero.querySelector('.pick-line').innerHTML = heroDefaults.pick;
+    } else {
+      hero.classList.remove('is-linked');
+      ribbon.innerHTML = '预览 <strong>#' + row.querySelector('.num').textContent + ' ' + row.dataset.label + '</strong>（非主推 · 移开恢复）';
+      hero.querySelector('.pick-line').innerHTML = row.dataset.label + ' @ <span class="num">' + odds + '</span>';
+    }
+  }
+
+  function resetHero() {
+    hero.classList.add('is-linked');
+    document.getElementById('hero-amt').textContent = heroDefaults.amt;
+    document.getElementById('hero-score').textContent = heroDefaults.score;
+    hero.querySelector('.pick-line').innerHTML = heroDefaults.pick;
+    hero.querySelectorAll('.dim-row .db i').forEach(function(b, i){
+      b.style.setProperty('--w', heroDefaults.dims[i] || '0');
+    });
+    ribbon.textContent = '悬停 Top6 行可对比落选方案 · 点击行展开四维明细';
+  }
+
+  rows.forEach(function(row){
+    row.addEventListener('mouseenter', function(){ setHeroFromRow(row); row.classList.add('is-active'); });
+    row.addEventListener('mouseleave', function(){ row.classList.remove('is-active'); resetHero(); });
+    row.addEventListener('click', function(){
+      var id = row.dataset.schemeId;
+      var detail = document.querySelector('tr.top6-detail[data-for="' + id + '"]');
+      var open = detail && detail.classList.contains('open');
+      document.querySelectorAll('tr.top6-detail.open').forEach(function(d){ d.classList.remove('open'); });
+      if (detail && !open) detail.classList.add('open');
+      hero.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'nearest' });
+    });
+    row.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); row.click(); }
+    });
+  });
+
+  var heroRow = document.querySelector('.top6-row[data-scheme-id="' + heroScheme + '"]');
+  if (heroRow) {
+    hero.addEventListener('mouseenter', function(){
+      heroRow.classList.add('is-active');
+      hero.classList.add('is-linked');
+    });
+    hero.addEventListener('mouseleave', function(){ heroRow.classList.remove('is-active'); });
+  }
+
+  var top3Cards = document.querySelectorAll('.top3-card[data-scheme-id]');
+  top3Cards.forEach(function(card){
+    card.addEventListener('click', function(){
+      var sid = card.dataset.schemeId;
+      var row = document.querySelector('.top6-row[data-scheme-id="' + sid + '"]');
+      document.querySelectorAll('.top3-card').forEach(function(c){ c.classList.remove('is-active'); });
+      card.classList.add('is-active');
+      if (row) {
+        rows.forEach(function(r){ r.classList.remove('is-active'); });
+        row.classList.add('is-active');
+        setHeroFromRow(row);
+        var detail = document.querySelector('tr.top6-detail[data-for="' + sid + '"]');
+        document.querySelectorAll('tr.top6-detail.open').forEach(function(d){ d.classList.remove('open'); });
+        if (detail) detail.classList.add('open');
+      }
+      hero.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'nearest' });
+    });
+    card.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

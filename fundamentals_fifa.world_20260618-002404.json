@@ -1,0 +1,1552 @@
+{
+  "meta": {
+    "league": "fifa.world",
+    "date": "20260617",
+    "snapshot_at": "20260618-002404",
+    "source": "ESPN public API",
+    "match_count": 4,
+    "forecast_enriched": true,
+    "forecast_match_count": 4,
+    "odds_source": "odds_260617_20260617-202235.json"
+  },
+  "records": [
+    {
+      "event": {
+        "event_id": "760435",
+        "name": "Congo DR at Portugal",
+        "short_name": "COD @ POR",
+        "date": "2026-06-17T17:00Z",
+        "status": "STATUS_SCHEDULED",
+        "venue": "NRG Stadium",
+        "home": "Portugal",
+        "away": "Congo DR"
+      },
+      "features": {
+        "last_five_games": [
+          {
+            "team": "Portugal",
+            "events": [
+              {
+                "date": "2025-11-16",
+                "opponent": "Armenia",
+                "result": "W",
+                "score": "9-1",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-03-29",
+                "opponent": "Mexico",
+                "result": "D",
+                "score": "0-0",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-03-31",
+                "opponent": "United States",
+                "result": "W",
+                "score": "2-0",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-06-06",
+                "opponent": "Chile",
+                "result": "W",
+                "score": "2-1",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-06-10",
+                "opponent": "Nigeria",
+                "result": "W",
+                "score": "2-1",
+                "at_venue": "vs"
+              }
+            ]
+          },
+          {
+            "team": "Congo DR",
+            "events": [
+              {
+                "date": "2026-01-06",
+                "opponent": "Algeria",
+                "result": "L",
+                "score": "1-0",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-03-25",
+                "opponent": "Bermuda",
+                "result": "W",
+                "score": "2-0",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-03-31",
+                "opponent": "Jamaica",
+                "result": "W",
+                "score": "1-0",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-06-03",
+                "opponent": "Denmark",
+                "result": "D",
+                "score": "0-0",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-06-09",
+                "opponent": "Chile",
+                "result": "L",
+                "score": "2-1",
+                "at_venue": "vs"
+              }
+            ]
+          }
+        ],
+        "head_to_head": [
+          {
+            "title": null,
+            "note": "",
+            "events": []
+          }
+        ],
+        "consensus_odds": {
+          "provider": "DraftKings",
+          "details": "POR -1.5",
+          "spread": -1.5,
+          "over_under": 2.5,
+          "home_money_line": -350,
+          "draw_money_line": 450.0,
+          "away_money_line": 1100
+        },
+        "rosters_size": [
+          {
+            "team": "Portugal",
+            "size": 26
+          },
+          {
+            "team": "Congo DR",
+            "size": 26
+          }
+        ],
+        "news_headlines": [
+          {
+            "headline": "Croatia scouting report: A closer look at England's first opponents of the World Cup",
+            "type": "Story",
+            "published": "2026-06-17T16:18:23Z",
+            "link": "https://www.espn.com/soccer/story/_/id/49053531/croatia-scouting-report-closer-look-england-first-opponents-world-cup-2026"
+          },
+          {
+            "headline": "World Cup 2026 today: Live updates, latest news as Kane, Ronaldo in action tonight - June 17",
+            "type": "Story",
+            "published": "2026-06-17T16:04:48Z",
+            "link": "https://www.espn.com/soccer/story/_/id/49091004/world-cup-2026-today-blog-17-06-2026-live-updates-news-fixtures-schedule-results-lionel-messi"
+          },
+          {
+            "headline": "Scotland fans drink Boston dry as local bars run out of beer",
+            "type": "HeadlineNews",
+            "published": "2026-06-17T16:15:56Z",
+            "link": "https://www.espn.com/soccer/story/_/id/49096272/scotland-fans-drink-boston-dry-local-bars-run-beer-world-cup"
+          },
+          {
+            "headline": "Every team's championship, group odds for the 2026 World Cup",
+            "type": "Story",
+            "published": "2026-06-17T15:22:35Z",
+            "link": "https://www.espn.com/espn/betting/story/_/id/48386952/espn-soccer-futbol-world-cup-betting-odds-championship-groups"
+          },
+          {
+            "headline": "Scott McKenna misses Scotland training ahead of World Cup clash with Morocco",
+            "type": "HeadlineNews",
+            "published": "2026-06-17T15:17:59Z",
+            "link": "https://www.espn.com/soccer/story/_/id/49095828/scott-mckenna-misses-scotland-training-ahead-world-cup-clash-morocco"
+          },
+          {
+            "headline": "Canada stars point to Nigerian influences as Les Rouges seek first FIFA World Cup win",
+            "type": "Story",
+            "published": "2026-06-17T16:07:52Z",
+            "link": "https://www.espn.com/espn/story/_/id/49096230/canada-stars-point-nigerian-influences-les-rouges-seek-first-fifa-world-cup-win"
+          }
+        ],
+        "missing": [
+          "head_to_head"
+        ],
+        "h2h_last_three": [],
+        "last_ten_games": [
+          {
+            "team": "Portugal",
+            "events": [
+              {
+                "date": "2026-06-10",
+                "opponent": "Nigeria",
+                "result": "W",
+                "score": "2-1",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-06-06",
+                "opponent": "Chile",
+                "result": "W",
+                "score": "2-1",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-03-31",
+                "opponent": "United States",
+                "result": "W",
+                "score": "2-0",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-03-29",
+                "opponent": "Mexico",
+                "result": "D",
+                "score": "0-0",
+                "at_venue": "@"
+              },
+              {
+                "date": "2025-11-16",
+                "opponent": "Armenia",
+                "result": "W",
+                "score": "9-1",
+                "at_venue": "vs"
+              }
+            ]
+          },
+          {
+            "team": "Congo DR",
+            "events": [
+              {
+                "date": "2026-06-09",
+                "opponent": "Chile",
+                "result": "L",
+                "score": "2-1",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-06-03",
+                "opponent": "Denmark",
+                "result": "D",
+                "score": "0-0",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-03-31",
+                "opponent": "Jamaica",
+                "result": "W",
+                "score": "1-0",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-03-25",
+                "opponent": "Bermuda",
+                "result": "W",
+                "score": "2-0",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-01-06",
+                "opponent": "Algeria",
+                "result": "L",
+                "score": "1-0",
+                "at_venue": "@"
+              }
+            ]
+          }
+        ],
+        "team_stats": {
+          "Portugal": {
+            "n": 5,
+            "win_rate": 0.8,
+            "avg_gf": 2.6,
+            "avg_ga": 1.0,
+            "form_score": 86.7
+          },
+          "Congo DR": {
+            "n": 5,
+            "win_rate": 0.4,
+            "avg_gf": 1.0,
+            "avg_ga": 0.4,
+            "form_score": 46.7
+          }
+        }
+      },
+      "_raw_summary_keys": [
+        "boxscore",
+        "format",
+        "gameInfo",
+        "lastFiveGames",
+        "headToHeadGames",
+        "broadcasts",
+        "pickcenter",
+        "odds",
+        "hasOdds",
+        "rosters",
+        "news",
+        "videos",
+        "header",
+        "wallclockAvailable",
+        "meta",
+        "standings"
+      ],
+      "forecast": {
+        "wdl": "胜",
+        "wdl_prob": 0.6561,
+        "total_goals": "1",
+        "total_goals_prob": 0.2565,
+        "score": "1:0",
+        "score_prob": 0.3794,
+        "expected_goals": {
+          "home": 1.5,
+          "away": 1.0
+        },
+        "top_scorelines": [
+          [
+            "1:0",
+            0.12312749793584819
+          ],
+          [
+            "1:1",
+            0.12312749793584819
+          ],
+          [
+            "2:0",
+            0.09234562345188614
+          ],
+          [
+            "2:1",
+            0.09234562345188614
+          ],
+          [
+            "0:0",
+            0.0820849986238988
+          ]
+        ],
+        "top_total_goals": [
+          [
+            "2",
+            0.2565
+          ],
+          [
+            "3",
+            0.2138
+          ],
+          [
+            "1",
+            0.2052
+          ],
+          [
+            "4",
+            0.1336
+          ],
+          [
+            "0",
+            0.0821
+          ]
+        ],
+        "schemes": [
+          {
+            "id": "P1",
+            "wdl": "胜",
+            "total_goals": "2",
+            "score": "—",
+            "combined_prob": 0.4963,
+            "scenario_note": null,
+            "logic": "综合主队优势 58/100；硬实力 66.5；人员 50.0；大赛 50.0；市场 78.3；→ 胜 / 总进球 2 / 比分 —",
+            "rank": 1
+          },
+          {
+            "id": "P2",
+            "wdl": "胜",
+            "total_goals": "1",
+            "score": "1:0",
+            "combined_prob": 0.3794,
+            "scenario_note": null,
+            "logic": "综合主队优势 58/100；硬实力 66.5；人员 50.0；大赛 50.0；市场 78.3；→ 胜 / 总进球 1 / 比分 1:0",
+            "rank": 2
+          },
+          {
+            "id": "P3",
+            "wdl": "胜",
+            "total_goals": "2",
+            "score": "2:0",
+            "combined_prob": 0.3789,
+            "scenario_note": null,
+            "logic": "综合主队优势 58/100；硬实力 66.5；人员 50.0；大赛 50.0；市场 78.3；→ 胜 / 总进球 2 / 比分 2:0",
+            "rank": 3
+          }
+        ],
+        "match_no": "周三021",
+        "home_cn": "葡萄牙",
+        "away_cn": "刚果金",
+        "home_en": "Portugal",
+        "away_en": "Congo DR"
+      }
+    },
+    {
+      "event": {
+        "event_id": "760437",
+        "name": "Croatia at England",
+        "short_name": "CRO @ ENG",
+        "date": "2026-06-17T20:00Z",
+        "status": "STATUS_SCHEDULED",
+        "venue": "AT&T Stadium",
+        "home": "England",
+        "away": "Croatia"
+      },
+      "features": {
+        "last_five_games": [
+          {
+            "team": "England",
+            "events": [
+              {
+                "date": "2025-11-16",
+                "opponent": "Albania",
+                "result": "W",
+                "score": "2-0",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-03-27",
+                "opponent": "Uruguay",
+                "result": "D",
+                "score": "1-1",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-03-31",
+                "opponent": "Japan",
+                "result": "L",
+                "score": "1-0",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-06-06",
+                "opponent": "New Zealand",
+                "result": "W",
+                "score": "1-0",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-06-10",
+                "opponent": "Costa Rica",
+                "result": "W",
+                "score": "3-0",
+                "at_venue": "vs"
+              }
+            ]
+          },
+          {
+            "team": "Croatia",
+            "events": [
+              {
+                "date": "2025-11-17",
+                "opponent": "Montenegro",
+                "result": "W",
+                "score": "3-2",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-03-26",
+                "opponent": "Colombia",
+                "result": "W",
+                "score": "2-1",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-04-01",
+                "opponent": "Brazil",
+                "result": "L",
+                "score": "3-1",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-06-02",
+                "opponent": "Belgium",
+                "result": "L",
+                "score": "2-0",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-06-07",
+                "opponent": "Slovenia",
+                "result": "W",
+                "score": "2-1",
+                "at_venue": "vs"
+              }
+            ]
+          }
+        ],
+        "head_to_head": [
+          {
+            "title": null,
+            "note": "",
+            "events": [
+              {
+                "date": "2021-06-13",
+                "score": "1-0",
+                "result": "W"
+              },
+              {
+                "date": "2018-11-18",
+                "score": "2-1",
+                "result": "W"
+              },
+              {
+                "date": "2018-10-12",
+                "score": "0-0",
+                "result": "D"
+              },
+              {
+                "date": "2018-07-11",
+                "score": "2-1",
+                "result": "L"
+              },
+              {
+                "date": "2009-09-09",
+                "score": "5-1",
+                "result": "W"
+              }
+            ]
+          }
+        ],
+        "consensus_odds": {
+          "provider": "DraftKings",
+          "details": "ENG -0.5",
+          "spread": -0.5,
+          "over_under": 2.5,
+          "home_money_line": -145,
+          "draw_money_line": 275.0,
+          "away_money_line": 425
+        },
+        "rosters_size": [
+          {
+            "team": "England",
+            "size": 0
+          },
+          {
+            "team": "Croatia",
+            "size": 0
+          }
+        ],
+        "news_headlines": [
+          {
+            "headline": "Croatia scouting report: A closer look at England's first opponents of the World Cup",
+            "type": "Story",
+            "published": "2026-06-17T16:18:23Z",
+            "link": "https://www.espn.com/soccer/story/_/id/49053531/croatia-scouting-report-closer-look-england-first-opponents-world-cup-2026"
+          },
+          {
+            "headline": "World Cup 2026 today: Live updates, latest news as Kane, Ronaldo in action tonight - June 17",
+            "type": "Story",
+            "published": "2026-06-17T16:04:48Z",
+            "link": "https://www.espn.com/soccer/story/_/id/49091004/world-cup-2026-today-blog-17-06-2026-live-updates-news-fixtures-schedule-results-lionel-messi"
+          },
+          {
+            "headline": "Scotland fans drink Boston dry as local bars run out of beer",
+            "type": "HeadlineNews",
+            "published": "2026-06-17T16:15:56Z",
+            "link": "https://www.espn.com/soccer/story/_/id/49096272/scotland-fans-drink-boston-dry-local-bars-run-beer-world-cup"
+          },
+          {
+            "headline": "Every team's championship, group odds for the 2026 World Cup",
+            "type": "Story",
+            "published": "2026-06-17T15:22:35Z",
+            "link": "https://www.espn.com/espn/betting/story/_/id/48386952/espn-soccer-futbol-world-cup-betting-odds-championship-groups"
+          },
+          {
+            "headline": "Scott McKenna misses Scotland training ahead of World Cup clash with Morocco",
+            "type": "HeadlineNews",
+            "published": "2026-06-17T15:17:59Z",
+            "link": "https://www.espn.com/soccer/story/_/id/49095828/scott-mckenna-misses-scotland-training-ahead-world-cup-clash-morocco"
+          },
+          {
+            "headline": "Canada stars point to Nigerian influences as Les Rouges seek first FIFA World Cup win",
+            "type": "Story",
+            "published": "2026-06-17T16:07:52Z",
+            "link": "https://www.espn.com/espn/story/_/id/49096230/canada-stars-point-nigerian-influences-les-rouges-seek-first-fifa-world-cup-win"
+          }
+        ],
+        "missing": [
+          "rosters_lineups_injuries"
+        ],
+        "h2h_last_three": [
+          {
+            "date": "2021-06-13",
+            "score": "1-0",
+            "result": "W"
+          },
+          {
+            "date": "2018-11-18",
+            "score": "2-1",
+            "result": "W"
+          },
+          {
+            "date": "2018-10-12",
+            "score": "0-0",
+            "result": "D"
+          }
+        ],
+        "last_ten_games": [
+          {
+            "team": "England",
+            "events": [
+              {
+                "date": "2026-06-10",
+                "opponent": "Costa Rica",
+                "result": "W",
+                "score": "3-0",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-06-06",
+                "opponent": "New Zealand",
+                "result": "W",
+                "score": "1-0",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-03-31",
+                "opponent": "Japan",
+                "result": "L",
+                "score": "1-0",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-03-27",
+                "opponent": "Uruguay",
+                "result": "D",
+                "score": "1-1",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2025-11-16",
+                "opponent": "Albania",
+                "result": "W",
+                "score": "2-0",
+                "at_venue": "@"
+              }
+            ]
+          },
+          {
+            "team": "Croatia",
+            "events": [
+              {
+                "date": "2026-06-07",
+                "opponent": "Slovenia",
+                "result": "W",
+                "score": "2-1",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-06-02",
+                "opponent": "Belgium",
+                "result": "L",
+                "score": "2-0",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-04-01",
+                "opponent": "Brazil",
+                "result": "L",
+                "score": "3-1",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-03-26",
+                "opponent": "Colombia",
+                "result": "W",
+                "score": "2-1",
+                "at_venue": "@"
+              },
+              {
+                "date": "2025-11-17",
+                "opponent": "Montenegro",
+                "result": "W",
+                "score": "3-2",
+                "at_venue": "@"
+              }
+            ]
+          }
+        ],
+        "team_stats": {
+          "England": {
+            "n": 5,
+            "win_rate": 0.6,
+            "avg_gf": 1.2,
+            "avg_ga": 0.6,
+            "form_score": 66.7
+          },
+          "Croatia": {
+            "n": 5,
+            "win_rate": 0.6,
+            "avg_gf": 1.6,
+            "avg_ga": 1.8,
+            "form_score": 60.0
+          }
+        }
+      },
+      "_raw_summary_keys": [
+        "boxscore",
+        "format",
+        "gameInfo",
+        "lastFiveGames",
+        "headToHeadGames",
+        "broadcasts",
+        "pickcenter",
+        "odds",
+        "hasOdds",
+        "rosters",
+        "videos",
+        "ticketsInfo",
+        "news",
+        "header",
+        "wallclockAvailable",
+        "meta",
+        "standings"
+      ],
+      "forecast": {
+        "wdl": "胜",
+        "wdl_prob": 0.5184,
+        "total_goals": "1",
+        "total_goals_prob": 0.2565,
+        "score": "1:0",
+        "score_prob": 0.3157,
+        "expected_goals": {
+          "home": 1.44,
+          "away": 1.06
+        },
+        "top_scorelines": [
+          [
+            "1:1",
+            0.1252945418995191
+          ],
+          [
+            "1:0",
+            0.11820239801841426
+          ],
+          [
+            "2:1",
+            0.09021207016765376
+          ],
+          [
+            "0:1",
+            0.08701009854133272
+          ],
+          [
+            "2:0",
+            0.08510572657325825
+          ]
+        ],
+        "top_total_goals": [
+          [
+            "2",
+            0.2565
+          ],
+          [
+            "3",
+            0.2138
+          ],
+          [
+            "1",
+            0.2052
+          ],
+          [
+            "4",
+            0.1336
+          ],
+          [
+            "0",
+            0.0821
+          ]
+        ],
+        "schemes": [
+          {
+            "id": "P1",
+            "wdl": "胜",
+            "total_goals": "2",
+            "score": "—",
+            "combined_prob": 0.4136,
+            "scenario_note": null,
+            "logic": "综合主队优势 57/100；硬实力 53.3；大赛 50.0；H2H 83.3；市场 57.9；→ 胜 / 总进球 2 / 比分 —",
+            "rank": 1
+          },
+          {
+            "id": "P2",
+            "wdl": "胜",
+            "total_goals": "1",
+            "score": "1:0",
+            "combined_prob": 0.3157,
+            "scenario_note": null,
+            "logic": "综合主队优势 57/100；硬实力 53.3；大赛 50.0；H2H 83.3；市场 57.9；→ 胜 / 总进球 1 / 比分 1:0",
+            "rank": 2
+          },
+          {
+            "id": "P3",
+            "wdl": "胜",
+            "total_goals": "2",
+            "score": "2:0",
+            "combined_prob": 0.3144,
+            "scenario_note": null,
+            "logic": "综合主队优势 57/100；硬实力 53.3；大赛 50.0；H2H 83.3；市场 57.9；→ 胜 / 总进球 2 / 比分 2:0",
+            "rank": 3
+          }
+        ],
+        "match_no": "周三022",
+        "home_cn": "英格兰",
+        "away_cn": "克罗地亚",
+        "home_en": "England",
+        "away_en": "Croatia"
+      }
+    },
+    {
+      "event": {
+        "event_id": "760434",
+        "name": "Panama at Ghana",
+        "short_name": "PAN @ GHA",
+        "date": "2026-06-17T23:00Z",
+        "status": "STATUS_SCHEDULED",
+        "venue": "BMO Field",
+        "home": "Ghana",
+        "away": "Panama"
+      },
+      "features": {
+        "last_five_games": [
+          {
+            "team": "Ghana",
+            "events": [
+              {
+                "date": "2025-11-18",
+                "opponent": "South Korea",
+                "result": "L",
+                "score": "1-0",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-03-27",
+                "opponent": "Austria",
+                "result": "L",
+                "score": "5-1",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-03-30",
+                "opponent": "Germany",
+                "result": "L",
+                "score": "2-1",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-05-23",
+                "opponent": "Mexico",
+                "result": "L",
+                "score": "2-0",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-06-02",
+                "opponent": "Wales",
+                "result": "D",
+                "score": "1-1",
+                "at_venue": "@"
+              }
+            ]
+          },
+          {
+            "team": "Panama",
+            "events": [
+              {
+                "date": "2026-03-27",
+                "opponent": "South Africa",
+                "result": "D",
+                "score": "1-1",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-03-31",
+                "opponent": "South Africa",
+                "result": "W",
+                "score": "2-1",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-05-31",
+                "opponent": "Brazil",
+                "result": "L",
+                "score": "6-2",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-06-04",
+                "opponent": "Dominican Republic",
+                "result": "W",
+                "score": "4-2",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-06-06",
+                "opponent": "Bosnia-Herzegovina",
+                "result": "D",
+                "score": "1-1",
+                "at_venue": "vs"
+              }
+            ]
+          }
+        ],
+        "head_to_head": [
+          {
+            "title": null,
+            "note": "",
+            "events": []
+          }
+        ],
+        "consensus_odds": {
+          "provider": "DraftKings",
+          "details": "GHA -0.5",
+          "spread": -0.5,
+          "over_under": 2.5,
+          "home_money_line": 135,
+          "draw_money_line": 220.0,
+          "away_money_line": 225
+        },
+        "rosters_size": [
+          {
+            "team": "Ghana",
+            "size": 0
+          },
+          {
+            "team": "Panama",
+            "size": 0
+          }
+        ],
+        "news_headlines": [
+          {
+            "headline": "Croatia scouting report: A closer look at England's first opponents of the World Cup",
+            "type": "Story",
+            "published": "2026-06-17T16:18:23Z",
+            "link": "https://www.espn.com/soccer/story/_/id/49053531/croatia-scouting-report-closer-look-england-first-opponents-world-cup-2026"
+          },
+          {
+            "headline": "World Cup 2026 today: Live updates, latest news as Kane, Ronaldo in action tonight - June 17",
+            "type": "Story",
+            "published": "2026-06-17T16:04:48Z",
+            "link": "https://www.espn.com/soccer/story/_/id/49091004/world-cup-2026-today-blog-17-06-2026-live-updates-news-fixtures-schedule-results-lionel-messi"
+          },
+          {
+            "headline": "Scotland fans drink Boston dry as local bars run out of beer",
+            "type": "HeadlineNews",
+            "published": "2026-06-17T16:15:56Z",
+            "link": "https://www.espn.com/soccer/story/_/id/49096272/scotland-fans-drink-boston-dry-local-bars-run-beer-world-cup"
+          },
+          {
+            "headline": "Every team's championship, group odds for the 2026 World Cup",
+            "type": "Story",
+            "published": "2026-06-17T15:22:35Z",
+            "link": "https://www.espn.com/espn/betting/story/_/id/48386952/espn-soccer-futbol-world-cup-betting-odds-championship-groups"
+          },
+          {
+            "headline": "Scott McKenna misses Scotland training ahead of World Cup clash with Morocco",
+            "type": "HeadlineNews",
+            "published": "2026-06-17T15:17:59Z",
+            "link": "https://www.espn.com/soccer/story/_/id/49095828/scott-mckenna-misses-scotland-training-ahead-world-cup-clash-morocco"
+          },
+          {
+            "headline": "Canada stars point to Nigerian influences as Les Rouges seek first FIFA World Cup win",
+            "type": "Story",
+            "published": "2026-06-17T16:07:52Z",
+            "link": "https://www.espn.com/espn/story/_/id/49096230/canada-stars-point-nigerian-influences-les-rouges-seek-first-fifa-world-cup-win"
+          }
+        ],
+        "missing": [
+          "head_to_head",
+          "rosters_lineups_injuries"
+        ],
+        "h2h_last_three": [],
+        "last_ten_games": [
+          {
+            "team": "Ghana",
+            "events": [
+              {
+                "date": "2026-06-02",
+                "opponent": "Wales",
+                "result": "D",
+                "score": "1-1",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-05-23",
+                "opponent": "Mexico",
+                "result": "L",
+                "score": "2-0",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-03-30",
+                "opponent": "Germany",
+                "result": "L",
+                "score": "2-1",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-03-27",
+                "opponent": "Austria",
+                "result": "L",
+                "score": "5-1",
+                "at_venue": "@"
+              },
+              {
+                "date": "2025-11-18",
+                "opponent": "South Korea",
+                "result": "L",
+                "score": "1-0",
+                "at_venue": "@"
+              }
+            ]
+          },
+          {
+            "team": "Panama",
+            "events": [
+              {
+                "date": "2026-06-06",
+                "opponent": "Bosnia-Herzegovina",
+                "result": "D",
+                "score": "1-1",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-06-04",
+                "opponent": "Dominican Republic",
+                "result": "W",
+                "score": "4-2",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-05-31",
+                "opponent": "Brazil",
+                "result": "L",
+                "score": "6-2",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-03-31",
+                "opponent": "South Africa",
+                "result": "W",
+                "score": "2-1",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-03-27",
+                "opponent": "South Africa",
+                "result": "D",
+                "score": "1-1",
+                "at_venue": "@"
+              }
+            ]
+          }
+        ],
+        "team_stats": {
+          "Ghana": {
+            "n": 5,
+            "win_rate": 0.0,
+            "avg_gf": 0.6,
+            "avg_ga": 2.2,
+            "form_score": 6.7
+          },
+          "Panama": {
+            "n": 5,
+            "win_rate": 0.4,
+            "avg_gf": 1.8,
+            "avg_ga": 2.4,
+            "form_score": 53.3
+          }
+        }
+      },
+      "_raw_summary_keys": [
+        "boxscore",
+        "format",
+        "gameInfo",
+        "lastFiveGames",
+        "headToHeadGames",
+        "broadcasts",
+        "pickcenter",
+        "odds",
+        "hasOdds",
+        "news",
+        "rosters",
+        "ticketsInfo",
+        "videos",
+        "header",
+        "wallclockAvailable",
+        "meta",
+        "standings"
+      ],
+      "forecast": {
+        "wdl": "胜",
+        "wdl_prob": 0.3892,
+        "total_goals": "1",
+        "total_goals_prob": 0.2565,
+        "score": "1:0",
+        "score_prob": 0.2469,
+        "expected_goals": {
+          "home": 1.07,
+          "away": 1.43
+        },
+        "top_scorelines": [
+          [
+            "1:1",
+            0.12559825639442754
+          ],
+          [
+            "0:1",
+            0.11738154803217526
+          ],
+          [
+            "1:2",
+            0.08980275332201569
+          ],
+          [
+            "1:0",
+            0.08783094852757173
+          ],
+          [
+            "0:2",
+            0.08392780684300531
+          ]
+        ],
+        "top_total_goals": [
+          [
+            "2",
+            0.2565
+          ],
+          [
+            "3",
+            0.2138
+          ],
+          [
+            "1",
+            0.2052
+          ],
+          [
+            "4",
+            0.1336
+          ],
+          [
+            "0",
+            0.0821
+          ]
+        ],
+        "schemes": [
+          {
+            "id": "P1",
+            "wdl": "胜",
+            "total_goals": "2",
+            "score": "—",
+            "combined_prob": 0.3361,
+            "scenario_note": null,
+            "logic": "综合主队优势 44/100；硬实力 32.2；大赛 50.0；市场 43.4；→ 胜 / 总进球 2 / 比分 —",
+            "rank": 1
+          },
+          {
+            "id": "P2",
+            "wdl": "负",
+            "total_goals": "2",
+            "score": "—",
+            "combined_prob": 0.2942,
+            "scenario_note": null,
+            "logic": "综合主队优势 44/100；硬实力 32.2；大赛 50.0；市场 43.4；→ 负 / 总进球 2 / 比分 —",
+            "rank": 2
+          },
+          {
+            "id": "P3",
+            "wdl": "平",
+            "total_goals": "2",
+            "score": "—",
+            "combined_prob": 0.2774,
+            "scenario_note": null,
+            "logic": "综合主队优势 44/100；硬实力 32.2；大赛 50.0；市场 43.4；→ 平 / 总进球 2 / 比分 —",
+            "rank": 3
+          }
+        ],
+        "match_no": "周三023",
+        "home_cn": "加纳",
+        "away_cn": "巴拿马",
+        "home_en": "Ghana",
+        "away_en": "Panama"
+      }
+    },
+    {
+      "event": {
+        "event_id": "760436",
+        "name": "Colombia at Uzbekistan",
+        "short_name": "COL @ UZB",
+        "date": "2026-06-18T02:00Z",
+        "status": "STATUS_SCHEDULED",
+        "venue": "Estadio Banorte",
+        "home": "Uzbekistan",
+        "away": "Colombia"
+      },
+      "features": {
+        "last_five_games": [
+          {
+            "team": "Uzbekistan",
+            "events": [
+              {
+                "date": "2026-01-26",
+                "opponent": "China",
+                "result": "D",
+                "score": "2-2",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-03-27",
+                "opponent": "Gabon",
+                "result": "W",
+                "score": "3-1",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-03-30",
+                "opponent": "Venezuela",
+                "result": "W",
+                "score": "0-0",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-06-02",
+                "opponent": "Canada",
+                "result": "L",
+                "score": "2-0",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-06-08",
+                "opponent": "Netherlands",
+                "result": "L",
+                "score": "2-1",
+                "at_venue": "@"
+              }
+            ]
+          },
+          {
+            "team": "Colombia",
+            "events": [
+              {
+                "date": "2025-11-19",
+                "opponent": "Australia",
+                "result": "W",
+                "score": "3-0",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-03-26",
+                "opponent": "Croatia",
+                "result": "L",
+                "score": "2-1",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-03-29",
+                "opponent": "France",
+                "result": "L",
+                "score": "3-1",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-06-01",
+                "opponent": "Costa Rica",
+                "result": "W",
+                "score": "3-1",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-06-07",
+                "opponent": "Jordan",
+                "result": "W",
+                "score": "2-0",
+                "at_venue": "vs"
+              }
+            ]
+          }
+        ],
+        "head_to_head": [
+          {
+            "title": null,
+            "note": "",
+            "events": []
+          }
+        ],
+        "consensus_odds": {
+          "provider": "DraftKings",
+          "details": "COL -1.5",
+          "spread": 1.5,
+          "over_under": 2.5,
+          "home_money_line": 850,
+          "draw_money_line": 390.0,
+          "away_money_line": -270
+        },
+        "rosters_size": [
+          {
+            "team": "Uzbekistan",
+            "size": 0
+          },
+          {
+            "team": "Colombia",
+            "size": 0
+          }
+        ],
+        "news_headlines": [
+          {
+            "headline": "Croatia scouting report: A closer look at England's first opponents of the World Cup",
+            "type": "Story",
+            "published": "2026-06-17T16:18:23Z",
+            "link": "https://www.espn.com/soccer/story/_/id/49053531/croatia-scouting-report-closer-look-england-first-opponents-world-cup-2026"
+          },
+          {
+            "headline": "World Cup 2026 today: Live updates, latest news as Kane, Ronaldo in action tonight - June 17",
+            "type": "Story",
+            "published": "2026-06-17T16:04:48Z",
+            "link": "https://www.espn.com/soccer/story/_/id/49091004/world-cup-2026-today-blog-17-06-2026-live-updates-news-fixtures-schedule-results-lionel-messi"
+          },
+          {
+            "headline": "Scotland fans drink Boston dry as local bars run out of beer",
+            "type": "HeadlineNews",
+            "published": "2026-06-17T16:15:56Z",
+            "link": "https://www.espn.com/soccer/story/_/id/49096272/scotland-fans-drink-boston-dry-local-bars-run-beer-world-cup"
+          },
+          {
+            "headline": "Every team's championship, group odds for the 2026 World Cup",
+            "type": "Story",
+            "published": "2026-06-17T15:22:35Z",
+            "link": "https://www.espn.com/espn/betting/story/_/id/48386952/espn-soccer-futbol-world-cup-betting-odds-championship-groups"
+          },
+          {
+            "headline": "Scott McKenna misses Scotland training ahead of World Cup clash with Morocco",
+            "type": "HeadlineNews",
+            "published": "2026-06-17T15:17:59Z",
+            "link": "https://www.espn.com/soccer/story/_/id/49095828/scott-mckenna-misses-scotland-training-ahead-world-cup-clash-morocco"
+          },
+          {
+            "headline": "Canada stars point to Nigerian influences as Les Rouges seek first FIFA World Cup win",
+            "type": "Story",
+            "published": "2026-06-17T16:07:52Z",
+            "link": "https://www.espn.com/espn/story/_/id/49096230/canada-stars-point-nigerian-influences-les-rouges-seek-first-fifa-world-cup-win"
+          }
+        ],
+        "missing": [
+          "head_to_head",
+          "rosters_lineups_injuries"
+        ],
+        "h2h_last_three": [],
+        "last_ten_games": [
+          {
+            "team": "Uzbekistan",
+            "events": [
+              {
+                "date": "2026-06-08",
+                "opponent": "Netherlands",
+                "result": "L",
+                "score": "2-1",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-06-02",
+                "opponent": "Canada",
+                "result": "L",
+                "score": "2-0",
+                "at_venue": "@"
+              },
+              {
+                "date": "2026-03-30",
+                "opponent": "Venezuela",
+                "result": "W",
+                "score": "0-0",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-03-27",
+                "opponent": "Gabon",
+                "result": "W",
+                "score": "3-1",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-01-26",
+                "opponent": "China",
+                "result": "D",
+                "score": "2-2",
+                "at_venue": "vs"
+              }
+            ]
+          },
+          {
+            "team": "Colombia",
+            "events": [
+              {
+                "date": "2026-06-07",
+                "opponent": "Jordan",
+                "result": "W",
+                "score": "2-0",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-06-01",
+                "opponent": "Costa Rica",
+                "result": "W",
+                "score": "3-1",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-03-29",
+                "opponent": "France",
+                "result": "L",
+                "score": "3-1",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2026-03-26",
+                "opponent": "Croatia",
+                "result": "L",
+                "score": "2-1",
+                "at_venue": "vs"
+              },
+              {
+                "date": "2025-11-19",
+                "opponent": "Australia",
+                "result": "W",
+                "score": "3-0",
+                "at_venue": "vs"
+              }
+            ]
+          }
+        ],
+        "team_stats": {
+          "Uzbekistan": {
+            "n": 5,
+            "win_rate": 0.4,
+            "avg_gf": 1.2,
+            "avg_ga": 1.4,
+            "form_score": 46.7
+          },
+          "Colombia": {
+            "n": 5,
+            "win_rate": 0.6,
+            "avg_gf": 2.6,
+            "avg_ga": 0.6,
+            "form_score": 60.0
+          }
+        }
+      },
+      "_raw_summary_keys": [
+        "boxscore",
+        "format",
+        "gameInfo",
+        "lastFiveGames",
+        "headToHeadGames",
+        "broadcasts",
+        "pickcenter",
+        "odds",
+        "hasOdds",
+        "rosters",
+        "videos",
+        "news",
+        "header",
+        "wallclockAvailable",
+        "meta",
+        "standings"
+      ],
+      "forecast": {
+        "wdl": "负",
+        "wdl_prob": 0.6176,
+        "total_goals": "2",
+        "total_goals_prob": 0.2565,
+        "score": "0:2",
+        "score_prob": 0.3717,
+        "expected_goals": {
+          "home": 0.78,
+          "away": 1.72
+        },
+        "top_scorelines": [
+          [
+            "0:1",
+            0.14118619763310591
+          ],
+          [
+            "0:2",
+            0.12142012996447106
+          ],
+          [
+            "1:1",
+            0.11012523415382261
+          ],
+          [
+            "1:2",
+            0.09470770137228743
+          ],
+          [
+            "0:0",
+            0.08208499862389879
+          ]
+        ],
+        "top_total_goals": [
+          [
+            "2",
+            0.2565
+          ],
+          [
+            "3",
+            0.2138
+          ],
+          [
+            "1",
+            0.2052
+          ],
+          [
+            "4",
+            0.1336
+          ],
+          [
+            "0",
+            0.0821
+          ]
+        ],
+        "schemes": [
+          {
+            "id": "P1",
+            "wdl": "负",
+            "total_goals": "2",
+            "score": "—",
+            "combined_prob": 0.4732,
+            "scenario_note": null,
+            "logic": "综合主队优势 42/100；硬实力 38.8；大赛 50.0；市场 9.2；→ 负 / 总进球 2 / 比分 —",
+            "rank": 1
+          },
+          {
+            "id": "P2",
+            "wdl": "负",
+            "total_goals": "2",
+            "score": "0:2",
+            "combined_prob": 0.3717,
+            "scenario_note": null,
+            "logic": "综合主队优势 42/100；硬实力 38.8；大赛 50.0；市场 9.2；→ 负 / 总进球 2 / 比分 0:2",
+            "rank": 2
+          },
+          {
+            "id": "P3",
+            "wdl": "负",
+            "total_goals": "1",
+            "score": "0:1",
+            "combined_prob": 0.3684,
+            "scenario_note": null,
+            "logic": "综合主队优势 42/100；硬实力 38.8；大赛 50.0；市场 9.2；→ 负 / 总进球 1 / 比分 0:1",
+            "rank": 3
+          }
+        ],
+        "match_no": "周三024",
+        "home_cn": "乌兹别克",
+        "away_cn": "哥伦比亚",
+        "home_en": "Uzbekistan",
+        "away_en": "Colombia"
+      }
+    }
+  ]
+}

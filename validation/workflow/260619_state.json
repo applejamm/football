@@ -1,0 +1,18 @@
+{
+  "day": "260619",
+  "updated_at": "2026-06-18T22:39:48",
+  "phase": 3,
+  "status": "complete",
+  "paths": {
+    "odds": "/Users/CursorProject/football/odds_window_24h_20260618-223948.json",
+    "fundamentals": "/Users/CursorProject/football/fundamentals_fifa.world_260619-merged.json",
+    "prediction": "/Users/CursorProject/football/prediction_260619_20260618-223951.json",
+    "scan": "/Users/CursorProject/football/validation/drafts/scan_260619_20260618-223951.json",
+    "draft_json": "/Users/CursorProject/football/validation/drafts/decision_260619_workflow_20260618-223951.json",
+    "draft_html": "/Users/CursorProject/football/validation/drafts/decision_260619_workflow_20260618-223951.html",
+    "report_html": "/Users/CursorProject/football/reports/report_260619_workflow_20260618-223951.html"
+  },
+  "budget": 200,
+  "budget_effective": 200,
+  "promoted": true
+}

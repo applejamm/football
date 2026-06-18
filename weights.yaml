@@ -1,0 +1,44 @@
+# PRD 五维权重模型配置（v1）
+# 各维度得分 0–100，50=中性，>50 偏向主队，<50 偏向客队
+# 缺失维度按 missing_dimension_score 计分，并在输出中标记「暂无」
+
+schema_version: "1.0"
+
+dimensions:
+  strength: 0.30      # 球队硬实力
+  personnel: 0.25     # 关键人员状态
+  tournament: 0.20    # 大赛适应性
+  h2h: 0.15           # 对战历史
+  market: 0.10        # 市场数据
+
+missing_dimension_score: 50.0
+
+# 硬实力子权重
+strength:
+  form_weight: 0.40           # 近 N 场形式分
+  win_rate_weight: 0.30       # 近 10 场胜率
+  goal_balance_weight: 0.30   # 近 5 场进失球差
+
+# 基本面 vs 市场融合（生成胜平负概率）
+outcome_blend:
+  fundamental_weight: 0.35
+  market_weight: 0.65
+
+# H2H 时间衰减（T-1-18）
+h2h:
+  max_meetings: 3
+  decay:
+    within_5_years: 1.0
+    within_10_years: 0.5
+    older: 0.2
+
+# 组合方案
+schemes:
+  min_count: 3
+  max_count: 5
+
+# 异常场景关键词（T-3-5 ~ T-3-7 逻辑钩子）
+scenario_keywords:
+  injury: ["injury", "injured", "伤", "缺阵", "withdrawn"]
+  must_win: ["must win", "生死战", "出线", "elimination", "do or die"]
+  high_draw_h2h: 0.45   # H2H 平局率 ≥ 此值触发「高平局」提示

@@ -1,0 +1,706 @@
+{
+  "meta": {
+    "schema_version": "1.0",
+    "match_date_code": "260616",
+    "generated_at": "2026-06-17T00:32:51",
+    "odds_source": "odds_260616_20260616-212759.json",
+    "fundamentals_source": "fundamentals_fifa.world_20260616-merged.json",
+    "match_count": 4,
+    "validation_run_id": "20260617-003256",
+    "validation_promoted_at": "2026-06-17T00:32:56",
+    "validation_run_dir": "validation/runs/20260617-003256"
+  },
+  "predictions": [
+    {
+      "match_no": "周二017",
+      "home_cn": "法国",
+      "away_cn": "塞内加尔",
+      "home_en": "France",
+      "away_en": "Senegal",
+      "fundamentals_matched": true,
+      "prediction": {
+        "home": "France",
+        "away": "Senegal",
+        "ref_date": "2026-06-16",
+        "dimensions": {
+          "strength": {
+            "score": 51.7,
+            "available": true,
+            "home_index": 69.0,
+            "away_index": 65.7,
+            "detail": "主队硬实力 69 vs 客队 66（含近5场形式/进失球、近10场胜率）"
+          },
+          "personnel": {
+            "score": 50.0,
+            "available": false,
+            "detail": "暂无：伤停/首发数据未覆盖"
+          },
+          "tournament": {
+            "score": 50.0,
+            "available": true,
+            "detail": "共识大小球 2.5（节奏参考）"
+          },
+          "h2h": {
+            "score": 0.0,
+            "available": true,
+            "meetings_used": 1,
+            "draw_rate": 0.0,
+            "advantage_home": -1.0,
+            "detail": "近 1 次交手（时间衰减），主队 advantage -1.00"
+          },
+          "market": {
+            "score": 67.0,
+            "available": true,
+            "probs": {
+              "胜": 0.6705,
+              "平": 0.2107,
+              "负": 0.1188
+            },
+            "detail": "体彩 去水后主胜 67.0% / 平 21.1% / 客胜 11.9%"
+          }
+        },
+        "composite": {
+          "composite_home": 44.71,
+          "breakdown": {
+            "strength": {
+              "score": 51.7,
+              "weight": 0.3,
+              "available": true
+            },
+            "personnel": {
+              "score": 50.0,
+              "weight": 0.25,
+              "available": false
+            },
+            "tournament": {
+              "score": 50.0,
+              "weight": 0.2,
+              "available": true
+            },
+            "h2h": {
+              "score": 0.0,
+              "weight": 0.15,
+              "available": true
+            },
+            "market": {
+              "score": 67.0,
+              "weight": 0.1,
+              "available": true
+            }
+          }
+        },
+        "outcome_probs": {
+          "胜": 0.5459,
+          "平": 0.239,
+          "负": 0.2151
+        },
+        "expected_goals": {
+          "home": 0.94,
+          "away": 1.56
+        },
+        "total_goals_probs": {
+          "0": 0.0821,
+          "1": 0.2052,
+          "2": 0.2565,
+          "3": 0.2138,
+          "4": 0.1336,
+          "5": 0.0668,
+          "6": 0.0261,
+          "7+": 0.0159
+        },
+        "top_scorelines": {
+          "0:1": 0.12805259785328213,
+          "1:1": 0.12036944198208521,
+          "0:2": 0.09988102632556006,
+          "1:2": 0.09388816474602646,
+          "0:0": 0.0820849986238988,
+          "1:0": 0.07715989870646486,
+          "2:1": 0.05657363773158005,
+          "0:3": 0.05193813368929123
+        },
+        "schemes": [
+          {
+            "id": "P1",
+            "wdl": "胜",
+            "total_goals": "2",
+            "score": "—",
+            "combined_prob": 0.4301,
+            "scenario_note": null,
+            "logic": "综合主队优势 45/100；硬实力 51.7；大赛 50.0；H2H 0.0；市场 67.0；→ 胜 / 总进球 2 / 比分 —",
+            "rank": 1
+          },
+          {
+            "id": "P2",
+            "wdl": "胜",
+            "total_goals": "1",
+            "score": "1:0",
+            "combined_prob": 0.3137,
+            "scenario_note": "赛前新闻含伤病信号，人员维度已下调/上调",
+            "logic": "综合主队优势 45/100；硬实力 51.7；大赛 50.0；H2H 0.0；市场 67.0；→ 胜 / 总进球 1 / 比分 1:0；赛前新闻含伤病信号，人员维度已下调/上调",
+            "rank": 2
+          },
+          {
+            "id": "P3",
+            "wdl": "胜",
+            "total_goals": "2",
+            "score": "2:0",
+            "combined_prob": 0.3096,
+            "scenario_note": "赛前新闻含伤病信号，人员维度已下调/上调",
+            "logic": "综合主队优势 45/100；硬实力 51.7；大赛 50.0；H2H 0.0；市场 67.0；→ 胜 / 总进球 2 / 比分 2:0；赛前新闻含伤病信号，人员维度已下调/上调",
+            "rank": 3
+          },
+          {
+            "id": "P4",
+            "wdl": "胜",
+            "total_goals": "3",
+            "score": "2:1",
+            "combined_prob": 0.3082,
+            "scenario_note": "赛前新闻含伤病信号，人员维度已下调/上调",
+            "logic": "综合主队优势 45/100；硬实力 51.7；大赛 50.0；H2H 0.0；市场 67.0；→ 胜 / 总进球 3 / 比分 2:1；赛前新闻含伤病信号，人员维度已下调/上调",
+            "rank": 4
+          },
+          {
+            "id": "P5",
+            "wdl": "平",
+            "total_goals": "2",
+            "score": "—",
+            "combined_prob": 0.246,
+            "scenario_note": null,
+            "logic": "综合主队优势 45/100；硬实力 51.7；大赛 50.0；H2H 0.0；市场 67.0；→ 平 / 总进球 2 / 比分 —",
+            "rank": 5
+          }
+        ],
+        "scenario_flags": [
+          "赛前新闻含伤病信号，人员维度已下调/上调"
+        ],
+        "home_stats": {
+          "n": 5,
+          "form_score": 80.0,
+          "win_rate": 0.8,
+          "avg_gf": 1.6,
+          "avg_ga": 2.0
+        },
+        "away_stats": {
+          "n": 5,
+          "form_score": 66.7,
+          "win_rate": 0.6,
+          "avg_gf": 2.0,
+          "avg_ga": 0.8
+        }
+      }
+    },
+    {
+      "match_no": "周二018",
+      "home_cn": "伊拉克",
+      "away_cn": "挪威",
+      "home_en": "伊拉克",
+      "away_en": "挪威",
+      "fundamentals_matched": false,
+      "prediction": {
+        "home": "伊拉克",
+        "away": "挪威",
+        "ref_date": "2026-06-16",
+        "dimensions": {
+          "strength": {
+            "score": null,
+            "available": false,
+            "detail": "形式/胜率/进失球不足"
+          },
+          "personnel": {
+            "score": 50.0,
+            "available": false,
+            "detail": "暂无：关键人员状态数据未覆盖"
+          },
+          "tournament": {
+            "score": 50.0,
+            "available": false,
+            "detail": "暂无：出线/气候/海拔数据未覆盖，中性计分"
+          },
+          "h2h": {
+            "score": null,
+            "available": false,
+            "detail": "无 H2H 数据"
+          },
+          "market": {
+            "score": 38.5,
+            "available": true,
+            "probs": {
+              "胜": 0.385,
+              "平": 0.2282,
+              "负": 0.3867
+            },
+            "detail": "体彩 去水后主胜 38.5% / 平 22.8% / 客胜 38.7%"
+          }
+        },
+        "composite": {
+          "composite_home": 48.52,
+          "breakdown": {
+            "strength": {
+              "score": 50.0,
+              "weight": 0.3,
+              "available": false
+            },
+            "personnel": {
+              "score": 50.0,
+              "weight": 0.25,
+              "available": false
+            },
+            "tournament": {
+              "score": 50.0,
+              "weight": 0.2,
+              "available": false
+            },
+            "h2h": {
+              "score": 50.0,
+              "weight": 0.15,
+              "available": false
+            },
+            "market": {
+              "score": 38.5,
+              "weight": 0.1,
+              "available": true
+            }
+          }
+        },
+        "outcome_probs": {
+          "胜": 0.3696,
+          "平": 0.252,
+          "负": 0.3784
+        },
+        "expected_goals": {
+          "home": 1.2,
+          "away": 1.0
+        },
+        "total_goals_probs": {
+          "0": 0.1108,
+          "1": 0.2438,
+          "2": 0.2681,
+          "3": 0.1966,
+          "4": 0.1082,
+          "5": 0.0476,
+          "6": 0.0168,
+          "7+": 0.0081
+        },
+        "top_scorelines": {
+          "1:0": 0.1329637900348007,
+          "1:1": 0.1329637900348007,
+          "0:0": 0.1108031583623339,
+          "0:1": 0.1108031583623339,
+          "2:0": 0.0797782740208804,
+          "2:1": 0.0797782740208804,
+          "1:2": 0.06648189501740034,
+          "0:2": 0.05540157918116695
+        },
+        "schemes": [
+          {
+            "id": "P1",
+            "wdl": "负",
+            "total_goals": "2",
+            "score": "—",
+            "combined_prob": 0.3343,
+            "scenario_note": null,
+            "logic": "综合主队优势 49/100；市场 38.5；→ 负 / 总进球 2 / 比分 —",
+            "rank": 1
+          },
+          {
+            "id": "P2",
+            "wdl": "胜",
+            "total_goals": "2",
+            "score": "—",
+            "combined_prob": 0.329,
+            "scenario_note": null,
+            "logic": "综合主队优势 49/100；市场 38.5；→ 胜 / 总进球 2 / 比分 —",
+            "rank": 2
+          },
+          {
+            "id": "P3",
+            "wdl": "胜",
+            "total_goals": "1",
+            "score": "1:0",
+            "combined_prob": 0.2616,
+            "scenario_note": null,
+            "logic": "综合主队优势 49/100；市场 38.5；→ 胜 / 总进球 1 / 比分 1:0",
+            "rank": 3
+          },
+          {
+            "id": "P4",
+            "wdl": "平",
+            "total_goals": "2",
+            "score": "—",
+            "combined_prob": 0.2584,
+            "scenario_note": null,
+            "logic": "综合主队优势 49/100；市场 38.5；→ 平 / 总进球 2 / 比分 —",
+            "rank": 4
+          },
+          {
+            "id": "P5",
+            "wdl": "负",
+            "total_goals": "1",
+            "score": "0:1",
+            "combined_prob": 0.2578,
+            "scenario_note": null,
+            "logic": "综合主队优势 49/100；市场 38.5；→ 负 / 总进球 1 / 比分 0:1",
+            "rank": 5
+          }
+        ],
+        "scenario_flags": [],
+        "home_stats": {
+          "n": 0,
+          "form_score": null,
+          "win_rate": null,
+          "avg_gf": null,
+          "avg_ga": null
+        },
+        "away_stats": {
+          "n": 0,
+          "form_score": null,
+          "win_rate": null,
+          "avg_gf": null,
+          "avg_ga": null
+        }
+      }
+    },
+    {
+      "match_no": "周二019",
+      "home_cn": "阿根廷",
+      "away_cn": "阿尔及利",
+      "home_en": "阿根廷",
+      "away_en": "阿尔及利",
+      "fundamentals_matched": false,
+      "prediction": {
+        "home": "阿根廷",
+        "away": "阿尔及利",
+        "ref_date": "2026-06-16",
+        "dimensions": {
+          "strength": {
+            "score": null,
+            "available": false,
+            "detail": "形式/胜率/进失球不足"
+          },
+          "personnel": {
+            "score": 50.0,
+            "available": false,
+            "detail": "暂无：关键人员状态数据未覆盖"
+          },
+          "tournament": {
+            "score": 50.0,
+            "available": false,
+            "detail": "暂无：出线/气候/海拔数据未覆盖，中性计分"
+          },
+          "h2h": {
+            "score": null,
+            "available": false,
+            "detail": "无 H2H 数据"
+          },
+          "market": {
+            "score": 68.6,
+            "available": true,
+            "probs": {
+              "胜": 0.6863,
+              "平": 0.2108,
+              "负": 0.1029
+            },
+            "detail": "体彩 去水后主胜 68.6% / 平 21.1% / 客胜 10.3%"
+          }
+        },
+        "composite": {
+          "composite_home": 52.4,
+          "breakdown": {
+            "strength": {
+              "score": 50.0,
+              "weight": 0.3,
+              "available": false
+            },
+            "personnel": {
+              "score": 50.0,
+              "weight": 0.25,
+              "available": false
+            },
+            "tournament": {
+              "score": 50.0,
+              "weight": 0.2,
+              "available": false
+            },
+            "h2h": {
+              "score": 50.0,
+              "weight": 0.15,
+              "available": false
+            },
+            "market": {
+              "score": 68.6,
+              "weight": 0.1,
+              "available": true
+            }
+          }
+        },
+        "outcome_probs": {
+          "胜": 0.5758,
+          "平": 0.2403,
+          "负": 0.184
+        },
+        "expected_goals": {
+          "home": 1.2,
+          "away": 1.0
+        },
+        "total_goals_probs": {
+          "0": 0.1108,
+          "1": 0.2438,
+          "2": 0.2681,
+          "3": 0.1966,
+          "4": 0.1082,
+          "5": 0.0476,
+          "6": 0.0168,
+          "7+": 0.0081
+        },
+        "top_scorelines": {
+          "1:0": 0.1329637900348007,
+          "1:1": 0.1329637900348007,
+          "0:0": 0.1108031583623339,
+          "0:1": 0.1108031583623339,
+          "2:0": 0.0797782740208804,
+          "2:1": 0.0797782740208804,
+          "1:2": 0.06648189501740034,
+          "0:2": 0.05540157918116695
+        },
+        "schemes": [
+          {
+            "id": "P1",
+            "wdl": "胜",
+            "total_goals": "2",
+            "score": "—",
+            "combined_prob": 0.4527,
+            "scenario_note": null,
+            "logic": "综合主队优势 52/100；市场 68.6；→ 胜 / 总进球 2 / 比分 —",
+            "rank": 1
+          },
+          {
+            "id": "P2",
+            "wdl": "胜",
+            "total_goals": "1",
+            "score": "1:0",
+            "combined_prob": 0.3544,
+            "scenario_note": null,
+            "logic": "综合主队优势 52/100；市场 68.6；→ 胜 / 总进球 1 / 比分 1:0",
+            "rank": 2
+          },
+          {
+            "id": "P3",
+            "wdl": "胜",
+            "total_goals": "2",
+            "score": "2:0",
+            "combined_prob": 0.3407,
+            "scenario_note": null,
+            "logic": "综合主队优势 52/100；市场 68.6；→ 胜 / 总进球 2 / 比分 2:0",
+            "rank": 3
+          },
+          {
+            "id": "P4",
+            "wdl": "胜",
+            "total_goals": "3",
+            "score": "2:1",
+            "combined_prob": 0.3264,
+            "scenario_note": null,
+            "logic": "综合主队优势 52/100；市场 68.6；→ 胜 / 总进球 3 / 比分 2:1",
+            "rank": 4
+          },
+          {
+            "id": "P5",
+            "wdl": "胜",
+            "total_goals": "3",
+            "score": "3:0",
+            "combined_prob": 0.3096,
+            "scenario_note": null,
+            "logic": "综合主队优势 52/100；市场 68.6；→ 胜 / 总进球 3 / 比分 3:0",
+            "rank": 5
+          }
+        ],
+        "scenario_flags": [],
+        "home_stats": {
+          "n": 0,
+          "form_score": null,
+          "win_rate": null,
+          "avg_gf": null,
+          "avg_ga": null
+        },
+        "away_stats": {
+          "n": 0,
+          "form_score": null,
+          "win_rate": null,
+          "avg_gf": null,
+          "avg_ga": null
+        }
+      }
+    },
+    {
+      "match_no": "周二020",
+      "home_cn": "奥地利",
+      "away_cn": "约旦",
+      "home_en": "奥地利",
+      "away_en": "约旦",
+      "fundamentals_matched": false,
+      "prediction": {
+        "home": "奥地利",
+        "away": "约旦",
+        "ref_date": "2026-06-16",
+        "dimensions": {
+          "strength": {
+            "score": null,
+            "available": false,
+            "detail": "形式/胜率/进失球不足"
+          },
+          "personnel": {
+            "score": 50.0,
+            "available": false,
+            "detail": "暂无：关键人员状态数据未覆盖"
+          },
+          "tournament": {
+            "score": 50.0,
+            "available": false,
+            "detail": "暂无：出线/气候/海拔数据未覆盖，中性计分"
+          },
+          "h2h": {
+            "score": null,
+            "available": false,
+            "detail": "无 H2H 数据"
+          },
+          "market": {
+            "score": 70.2,
+            "available": true,
+            "probs": {
+              "胜": 0.7024,
+              "平": 0.1903,
+              "负": 0.1073
+            },
+            "detail": "体彩 去水后主胜 70.2% / 平 19.0% / 客胜 10.7%"
+          }
+        },
+        "composite": {
+          "composite_home": 52.61,
+          "breakdown": {
+            "strength": {
+              "score": 50.0,
+              "weight": 0.3,
+              "available": false
+            },
+            "personnel": {
+              "score": 50.0,
+              "weight": 0.25,
+              "available": false
+            },
+            "tournament": {
+              "score": 50.0,
+              "weight": 0.2,
+              "available": false
+            },
+            "h2h": {
+              "score": 50.0,
+              "weight": 0.15,
+              "available": false
+            },
+            "market": {
+              "score": 70.2,
+              "weight": 0.1,
+              "available": true
+            }
+          }
+        },
+        "outcome_probs": {
+          "胜": 0.5868,
+          "平": 0.2269,
+          "负": 0.1863
+        },
+        "expected_goals": {
+          "home": 1.2,
+          "away": 1.0
+        },
+        "total_goals_probs": {
+          "0": 0.1108,
+          "1": 0.2438,
+          "2": 0.2681,
+          "3": 0.1966,
+          "4": 0.1082,
+          "5": 0.0476,
+          "6": 0.0168,
+          "7+": 0.0081
+        },
+        "top_scorelines": {
+          "1:0": 0.1329637900348007,
+          "1:1": 0.1329637900348007,
+          "0:0": 0.1108031583623339,
+          "0:1": 0.1108031583623339,
+          "2:0": 0.0797782740208804,
+          "2:1": 0.0797782740208804,
+          "1:2": 0.06648189501740034,
+          "0:2": 0.05540157918116695
+        },
+        "schemes": [
+          {
+            "id": "P1",
+            "wdl": "胜",
+            "total_goals": "2",
+            "score": "—",
+            "combined_prob": 0.4593,
+            "scenario_note": null,
+            "logic": "综合主队优势 53/100；市场 70.2；→ 胜 / 总进球 2 / 比分 —",
+            "rank": 1
+          },
+          {
+            "id": "P2",
+            "wdl": "胜",
+            "total_goals": "1",
+            "score": "1:0",
+            "combined_prob": 0.3594,
+            "scenario_note": null,
+            "logic": "综合主队优势 53/100；市场 70.2；→ 胜 / 总进球 1 / 比分 1:0",
+            "rank": 2
+          },
+          {
+            "id": "P3",
+            "wdl": "胜",
+            "total_goals": "2",
+            "score": "2:0",
+            "combined_prob": 0.3456,
+            "scenario_note": null,
+            "logic": "综合主队优势 53/100；市场 70.2；→ 胜 / 总进球 2 / 比分 2:0",
+            "rank": 3
+          },
+          {
+            "id": "P4",
+            "wdl": "胜",
+            "total_goals": "3",
+            "score": "2:1",
+            "combined_prob": 0.3313,
+            "scenario_note": null,
+            "logic": "综合主队优势 53/100；市场 70.2；→ 胜 / 总进球 3 / 比分 2:1",
+            "rank": 4
+          },
+          {
+            "id": "P5",
+            "wdl": "胜",
+            "total_goals": "3",
+            "score": "3:0",
+            "combined_prob": 0.3145,
+            "scenario_note": null,
+            "logic": "综合主队优势 53/100；市场 70.2；→ 胜 / 总进球 3 / 比分 3:0",
+            "rank": 5
+          }
+        ],
+        "scenario_flags": [],
+        "home_stats": {
+          "n": 0,
+          "form_score": null,
+          "win_rate": null,
+          "avg_gf": null,
+          "avg_ga": null
+        },
+        "away_stats": {
+          "n": 0,
+          "form_score": null,
+          "win_rate": null,
+          "avg_gf": null,
+          "avg_ga": null
+        }
+      }
+    }
+  ]
+}
